@@ -38,7 +38,7 @@ jobs:
         # you can copy private_key from your *.pem file, keep format
         ssh_private_key: ${{secrets.GODADDY_PRIVATEKEY}}
         # will put all file under this path
-        local_path: bin/Release/net5.0/publish
+        local_path: SanpetePantry/bin/Release/net5.0/
         # files will copy to under remote_path
         remote_path: app
         # sftp args
