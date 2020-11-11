@@ -22,7 +22,9 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release --no-restore
     - name: Test
-      run: dotnet test --no-restore --verbosity normal
+      run: dotnet test --no-restore --verbosity normal    
+    - name: Publish
+      run: dotnet publish --configuration Release --no-restore --self-contained --runtime linux-x64
 
     - name: SFTP uploader
       # You may pin to the exact commit or the version.
@@ -38,7 +40,7 @@ jobs:
         # 
         password: ${{ secrets.GODADDY_PASSWORD }}
         # 
-        localDir: SanpetePantry/bin/Release/net5.0
+        localDir: SanpetePantry/bin/Release/net5.0/publish
         # 
         remoteDir: app
         # 
