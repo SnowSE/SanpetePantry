@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <UserSecretsId>aspnet-SanpetePantry-6D5BD026-C3F9-49EC-BC78-39E3C8B581EA</UserSecretsId>
-    <RuntimeIdentifiers>win10-x64, linux-x64</RuntimeIdentifiers>
+    <RuntimeIdentifiers>win10-x64; linux-x64</RuntimeIdentifiers>
   </PropertyGroup>
 
   <ItemGroup>
