@@ -40,7 +40,7 @@ jobs:
         # 
         password: ${{ secrets.GODADDY_PASSWORD }}
         # 
-        localDir: SanpetePantry/bin/Release/net5.0/publish
+        localDir: SanpetePantry/bin/Release/net5.0/linux-x64/publish
         # 
         remoteDir: app
         # 
