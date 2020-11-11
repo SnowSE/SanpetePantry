@@ -30,13 +30,13 @@ jobs:
       uses: wangyucode/sftp-upload-action@v1.1
       with:
         # 
-        host: ${{GODADDY_SERVER}}
+        host: ${{ GODADDY_SERVER }}
         # 
         #port: # optional, default is 22
         # 
-        username: ${{GODADDY_USER}}
+        username: ${{ GODADDY_USER }}
         # 
-        password: ${{GODADDY_PASSWORD}}
+        password: ${{ GODADDY_PASSWORD }}
         # 
         localDir: SanpetePantry/bin/Release/net5.0
         # 
