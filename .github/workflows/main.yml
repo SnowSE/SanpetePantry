@@ -40,7 +40,7 @@ jobs:
         # will put all file under this path
         local_path: bin/Release/net5.0/publish
         # files will copy to under remote_path
-        remote_path: /app
+        remote_path: app
         # sftp args
         #args: # optional
 
