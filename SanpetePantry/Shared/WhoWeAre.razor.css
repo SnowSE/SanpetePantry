@@ -1,0 +1,43 @@
+﻿.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 0px 0px;
+    grid-template-areas: "img1 img2 img3" "head1 head2 head3" "body1 body2 body3";
+}
+
+.img1 {
+    grid-area: img1;
+}
+
+.img2 {
+    grid-area: img2;
+}
+
+.img3 {
+    grid-area: img3;
+}
+
+.head1 {
+    grid-area: head1;
+}
+
+.head2 {
+    grid-area: head2;
+}
+
+.head3 {
+    grid-area: head3;
+}
+
+.body1 {
+    grid-area: body1;
+}
+
+.body2 {
+    grid-area: body2;
+}
+
+.body3 {
+    grid-area: body3;
+}
