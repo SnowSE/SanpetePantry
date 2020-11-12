@@ -21,30 +21,33 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build --configuration Release --no-restore
-    - name: Test
-      run: dotnet test --no-restore --verbosity normal    
+#    - name: Test
+#      run: dotnet test --no-restore --verbosity normal    
     - name: Publish
       run: dotnet publish --configuration Release --self-contained true --runtime linux-x64 -p:PublishSingleFile=true
 
+    - name: Stop the service
+      uses: garygrossgarten/github-action-ssh@v0.5.0
+      with:      
+        command: touch i_tried_to_stop_the_service
+        host: ${{ secrets.GODADDY_SERVER }}
+        username: ${{ secrets.GODADDY_USER }}
+        password:  ${{ secrets.GODADDY_PASSWORD }}
+
     - name: SFTP uploader
-      # You may pin to the exact commit or the version.
-      # uses: wangyucode/sftp-upload-action@24f8bb83383dc39bed201ee5da01475e6c38c568
       uses: wangyucode/sftp-upload-action@v1.1
       with:
-        # 
         host: ${{ secrets.GODADDY_SERVER }}
-        # 
-        #port: # optional, default is 22
-        # 
         username: ${{ secrets.GODADDY_USER }}
-        # 
         password: ${{ secrets.GODADDY_PASSWORD }}
-        # 
         localDir: SanpetePantry/bin/Release/net5.0/linux-x64/publish
-        # 
         remoteDir: app
-        # 
-        #dryRun: # optional
 
-    
+    - name: Stop the service
+      uses: garygrossgarten/github-action-ssh@v0.5.0
+      with:      
+        command: touch i_tried_to_start_the_service
+        host: ${{ secrets.GODADDY_SERVER }}
+        username: ${{ secrets.GODADDY_USER }}
+        password:  ${{ secrets.GODADDY_PASSWORD }}    
 
