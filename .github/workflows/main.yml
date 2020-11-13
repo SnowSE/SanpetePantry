@@ -46,7 +46,7 @@ jobs:
     - name: Start the service
       uses: garygrossgarten/github-action-ssh@v0.5.0
       with:      
-        command: app/SanpetePantry --urls=http://0.0.0.0:5000
+        command: app/SanpetePantry --urls=http://0.0.0.0:5000 & 
         host: ${{ secrets.GODADDY_SERVER }}
         username: ${{ secrets.GODADDY_USER }}
         password:  ${{ secrets.GODADDY_PASSWORD }}    
