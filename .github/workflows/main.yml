@@ -29,7 +29,7 @@ jobs:
     - name: Stop the service
       uses: garygrossgarten/github-action-ssh@v0.5.0
       with:      
-        command: ps -af | grep SanpetePantry | cut -d ' ' -f 2 | xargs kill
+        command: ps -aef | grep SanpetePantry | cut -d ' ' -f 2 | xargs kill
         host: ${{ secrets.GODADDY_SERVER }}
         username: ${{ secrets.GODADDY_USER }}
         password:  ${{ secrets.GODADDY_PASSWORD }}
