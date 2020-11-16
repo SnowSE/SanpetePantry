@@ -32,7 +32,7 @@ jobs:
       with:
         file: SanpetePantry/Dockerfile
         push: true
-        tags: SanpetePantry/web:latest
+        tags: sanpetepantry/web:latest
         build-args: |
           exampleArg=exampleArgValue
           
