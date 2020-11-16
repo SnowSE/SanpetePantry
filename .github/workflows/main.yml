@@ -29,7 +29,8 @@ jobs:
     - name: Stop the service
       uses: garygrossgarten/github-action-ssh@v0.5.0
       with:      
-        command: touch i_tried_to_stop_the_service
+        #command: ps -aef | grep SanpetePantry | cut -d ' ' -f 2 | xargs kill
+        command: kill $(ps aux | grep 'SanpetePantry' | awk '{print $2}')
         host: ${{ secrets.GODADDY_SERVER }}
         username: ${{ secrets.GODADDY_USER }}
         password:  ${{ secrets.GODADDY_PASSWORD }}
@@ -43,10 +44,10 @@ jobs:
         localDir: SanpetePantry/bin/Release/net5.0/linux-x64/publish
         remoteDir: app
 
-    - name: Stop the service
+    - name: Start the service
       uses: garygrossgarten/github-action-ssh@v0.5.0
       with:      
-        command: touch i_tried_to_start_the_service
+        command: ./startWebsite
         host: ${{ secrets.GODADDY_SERVER }}
         username: ${{ secrets.GODADDY_USER }}
         password:  ${{ secrets.GODADDY_PASSWORD }}    
