@@ -3,9 +3,11 @@ param(
     [string]$tag
 )
 
-write-host "Got tag $tag from parameter, setting to BuildID ENV variable..."
-$ENV:BuildID=$tag
+$parts = [String]::Split($tag)
+$sha = $parts | where  -filterscript {$_ -like  "sha*" }
 
+write-host "Got tag $tag from parameter, setting to BuildID ENV variable..."
+$ENV:BuildID=$sha
 
 # pull new image
 write-host "Pulling new image"
