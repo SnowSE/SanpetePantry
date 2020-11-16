@@ -3,8 +3,7 @@ param(
     [string]$tag
 )
 
-$parts = [String]::Split($tag)
-$sha = $parts | where  -filterscript {$_ -like  "sha*" }
+$sha = $tag.split(":") | where  -filterscript {$_ -like  "sha*" }
 
 write-host "Got tag $tag from parameter, setting to BuildID ENV variable..."
 $ENV:BuildID=$sha
