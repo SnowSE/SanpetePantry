@@ -32,7 +32,9 @@ jobs:
       with:
         file: SanpetePantry/Dockerfile
         push: true
-        tags: sanpetepantry/web:latest
+        tags: |
+          sanpetepantry/web:latest
+          sanpetepantry/web:${{ GITHUB_RUN_NUMBER }}
         build-args: |
           exampleArg=exampleArgValue
           
