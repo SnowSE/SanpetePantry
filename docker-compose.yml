@@ -2,12 +2,12 @@ version: '3.5'
 
 services:
   sanpetepantry:
-    image: ${DOCKER_REGISTRY-}sanpetepantry:${BuildID}
+    image: ${DOCKER_REGISTRY-}sanpetepantry/web:${BuildID}
     build:
       context: .
       dockerfile: SanpetePantry/Dockerfile
     ports:
-     - 1024:80
+     - 80:80
     networks:
      pantrynet:
 
