@@ -34,9 +34,10 @@ jobs:
         push: true
         tags: |
           sanpetepantry/web:latest
-          sanpetepantry/web:test2.32.3
+          sanpetepantry/web:${$GITHUB_SHA}
         build-args: |
           exampleArg=exampleArgValue
+          otherArg=$GITHUB_SHA
           
     - name: Image Digest
       run: echo ${{ steps.docker_build.outputs.digest }}
