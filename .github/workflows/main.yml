@@ -34,7 +34,7 @@ jobs:
         push: true
         tags: |
           sanpetepantry/web:latest
-          sanpetepantry/web:$GITHUB_SHA
+          sanpetepantry/web:${GITHUB_SHA}
         build-args: |
           exampleArg=exampleArgValue
           
