@@ -53,13 +53,13 @@ jobs:
         host: ${{ secrets.LINODE_SERVER }}
         username: ${{ secrets.LINODE_USER }}
         password: ${{ secrets.LINODE_PASSWORD }}
-        localDir: .
-        remoteDir: src
+        localDir: scripts
+        remoteDir: scripts
 
     - name: Start the service
       uses: garygrossgarten/github-action-ssh@v0.5.0
       with:      
-        command: pwsh ./src/restart.ps1 -tag ${{ steps.prepare.outputs.tag}}
+        command: pwsh ./scripts/restart.ps1 -tag ${{ steps.prepare.outputs.tag}}
         host: ${{ secrets.LINODE_SERVER }}
         username: ${{ secrets.LINODE_USER }}
         password:  ${{ secrets.LINODE_PASSWORD }}    
