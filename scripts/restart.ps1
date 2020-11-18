@@ -5,7 +5,7 @@ param(
 
 $sha = $tag.split(":") | where  -filterscript {$_ -like  "sha*" }
 
-write-host "Got tag $tag from parameter, setting to BuildID ENV variable..."
+write-host "Got tag $tag from parameter, setting 'BuildID' to $sha"
 $ENV:BuildID=$sha
 
 # pull new image
