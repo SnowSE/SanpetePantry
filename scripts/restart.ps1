@@ -14,7 +14,7 @@ docker-compose pull
 
 # Stop running server
 write-host "Stopping server"
-docker-compose kill
+# docker-compose kill
 
 # Start server
 write-host "Starting server"

@@ -7,6 +7,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SanpetePantry", "SanpetePan
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{2DE5698B-456D-4996-9C06-4F46256BA6B1}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{75C99FEF-AA1D-4BD9-9D70-3C9C6CD6B218}"
+	ProjectSection(SolutionItems) = preProject
+		scripts\docker-compose.yml = scripts\docker-compose.yml
+		scripts\restart.ps1 = scripts\restart.ps1
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
