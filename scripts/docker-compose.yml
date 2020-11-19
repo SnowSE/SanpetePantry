@@ -3,23 +3,25 @@ version: '3.5'
 services:
   sanpetepantry:
     image: ${DOCKER_REGISTRY-}sanpetepantry/web:${BuildID}
-    ports:
-     - 80:80
+    #ports:
+     #- 80:80
     networks:
      pantrynet:
+    restart: unless-stopped
 
   reverseProxy:
     image: linuxserver/swag:latest
     environment:
      - TZ=America/Denver
-     - URL=beta.sanpetepantry.org
-     - SUBDOMAINS=www
+     - URL=sanpetepantry.org
+     - SUBDOMAINS=beta
      - VALIDATION=http
-    volumes:
-     - /path/to/appdata/config:/config
-    #ports:
-    # - 443:443
-    # - 80:80
+     - STAGING=true
+    #volumes:
+#     - /path/to/appdata/config:/config
+    ports:
+     - 443:443
+     - 80:80
     restart: unless-stopped
     networks:
      pantrynet:
