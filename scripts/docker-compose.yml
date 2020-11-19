@@ -17,8 +17,8 @@ services:
      #- SUBDOMAINS=beta
      - VALIDATION=http
      - STAGING=true
-    #volumes:
-#     - /path/to/appdata/config:/config
+    volumes:
+     - ./default.conf:/config/nginx/site-confs/default.conf
     ports:
      - 443:443
      - 80:80
