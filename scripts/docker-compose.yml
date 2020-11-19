@@ -16,7 +16,7 @@ services:
      - URL=beta.sanpetepantry.org
      #- SUBDOMAINS=beta
      - VALIDATION=http
-     - STAGING=true
+     #- STAGING=true
     volumes:
      - ./default.conf:/config/nginx/site-confs/default
     ports:
