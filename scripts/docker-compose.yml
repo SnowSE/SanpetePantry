@@ -13,8 +13,8 @@ services:
     image: linuxserver/swag:latest
     environment:
      - TZ=America/Denver
-     - URL=sanpetepantry.org
-     - SUBDOMAINS=beta
+     - URL=beta.sanpetepantry.org
+     #- SUBDOMAINS=beta
      - VALIDATION=http
      - STAGING=true
     #volumes:
