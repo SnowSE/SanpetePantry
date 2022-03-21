@@ -5,7 +5,7 @@
     - `apt install docker.io`
     - `apt install docker-compose`
     - `apt install snapd`
-    - `sudo snap install core`
+    - `snap install core`
     - `useradd -m -g users pantry`
     - `passwd pantry`
     - `sudo usermod -aG docker pantry`
