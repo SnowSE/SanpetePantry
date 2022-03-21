@@ -4,7 +4,7 @@
 - Logged in as root:
     - `apt install docker.io`
     - `apt install docker-compose`
-    - `apt install snap`
+    - `apt install snapd`
     - `useradd -m -g users pantry`
     - `passwd pantry`
     - `sudo usermod -aG docker pantry`
