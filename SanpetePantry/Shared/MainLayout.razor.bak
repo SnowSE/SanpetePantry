@@ -7,17 +7,14 @@
         <NavMenu />
     </div>
 
-    <div class="main">
+    <main>
         <div class="top-row px-4 auth">
             <LoginDisplay />
+            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
         </div>
 
-        <div class="content px-4">
+        <article class="content px-4">
             @Body
-            <div class="text-center py-5">
-                <span>Copyright © 2021 Sanpete Pantry - All Rights Reserved.</span>
-            </div>
-        </div>
-
-    </div>
+        </article>
+    </main>
 </div>
