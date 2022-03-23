@@ -1,5 +1,6 @@
 ﻿@page "/contact"
 @using System.ComponentModel.DataAnnotations
+@inject NavigationManager navManager
 
 <h1 style="font-family: 'Franklin Gothic Medium';" class="text-center">Contact Us</h1>
 
@@ -47,18 +48,29 @@
         </div>
     </div>
     <div class="row">
-        <EditForm Model=@contactModel OnValidSubmit=@HandleValidSubmit>
-            <DataAnnotationsValidator />
-            <ValidationSummary />
+        <div class="container w-50" style="margin: auto;">
+            <h3 style="font-family: Gabriola;" class="fw-bold text-center py-5">Have Questions or Solutions Let Us Know</h3>
+            <EditForm Model=@contactModel OnValidSubmit=@HandleValidSubmit>
 
-            <InputText @bind-Value=contactModel.Name />
+                <label style="font-family: 'Franklin Gothic Medium';" class="form-label">Name:</label>
+                <InputText @bind-Value=contactModel.Name class="form-control mb-3" />
 
-            <InputText @bind-Value=contactModel.Phone />
+                <label style="font-family: 'Franklin Gothic Medium';" class="form-label">Phone Number:</label>
+                <InputText @bind-Value=contactModel.Phone class="form-control mb-3" />
 
-            <InputTextArea @bind-Value=contactModel.Message />
+                <label style="font-family: 'Franklin Gothic Medium';" class="form-label">Email:</label>
+                <InputText @bind-Value=contactModel.Email class="form-control mb-3" />
 
-            <button type="submit">Submit</button>
-        </EditForm>
+                <label style="font-family: 'Franklin Gothic Medium';" class="form-label">Message:</label>
+                <InputTextArea @bind-Value=contactModel.Message class="form-control mb-3" />
+
+                <DataAnnotationsValidator />
+                <ValidationSummary />
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </EditForm>
+        </div>
     </div>
 </div>
 
@@ -81,6 +93,23 @@
 
     private void HandleValidSubmit()
     {
-        //send email here
+        Email.DefaultSender = new SmtpSender();
+        var template = "Contact Name: @Model.Name, Contact Phone Number: @Model.Phone, Contact Email: @Model.Email" + System.Environment.NewLine + "@Model.Message";
+
+        var email = Email
+            .From(contactModel.Email, contactModel.Name)
+            .To("mrtannertrimble@gmail.com", "Sanpete Pantry")
+            .Subject("Contact Us Email")
+            .UsingTemplate(template, new { Name = contactModel.Name, Phone = contactModel.Phone, Email = contactModel.Email, Message = contactModel.Message});
+
+        try
+        {
+            email.Send();
+            navManager.NavigateTo("/contact");
+        }
+        catch(Exception e)
+        {
+            Console.WriteLine(e);
+        }
     }
 }

@@ -41,6 +41,10 @@ namespace SanpetePantry
             services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
             services.AddDatabaseDeveloperPageExceptionFilter();
             services.AddSingleton<WeatherForecastService>();
+            services
+                .AddFluentEmail("mrtannertrimble@gmail.com")
+                .AddRazorRenderer()
+                .AddSmtpSender("localhost", 25);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
