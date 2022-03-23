@@ -1,9 +1,9 @@
 ﻿.grid-container {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr auto;
     grid-template-rows: auto auto auto;
     gap: 0px 0px;
-    grid-template-areas: "img1 img2 img3" "head1 head2 head3" "body1 body2 body3";
+    grid-template-areas: "img1 body1" "body2 img2" "img3 body3";
 }
 
 .img1 {
