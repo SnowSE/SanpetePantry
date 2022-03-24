@@ -82,13 +82,13 @@
     {
         [Required]
         [StringLength(256, ErrorMessage = "Name is too long.")]
-        public string Name { get; set; }
+        public string? Name { get; set; }
         [Phone]
-        public string Phone{get;set;}
+        public string? Phone{get;set;}
         [EmailAddress]
-        public string Email{get;set;}
+        public string? Email{get;set;}
         [StringLength(2048,ErrorMessage ="Please limit your comments to 2,048 characters")]
-        public string Message{get;set;}
+        public string? Message{get;set;}
     }
 
     private void HandleValidSubmit()
