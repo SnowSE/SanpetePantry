@@ -1,7 +1,76 @@
-﻿@page "/volunteer"
+﻿@using System.ComponentModel.DataAnnotations
+@inject NavigationManager navManager
+@page "/volunteer"
 
 <h1 style="font-family: 'Franklin Gothic Medium';" class="fw-bold text-center" >Volunteer</h1>
 
-@code {
 
+<div class="row">
+        <div class="container w-50" style="margin: auto;">
+            <h3 style="font-family: Gabriola;" class="fw-bold text-center py-5">Want To Volunteer? Contact Us</h3>
+            <EditForm Model=@contactModel OnValidSubmit=@HandleValidSubmit>
+
+                <label style="font-family: 'Franklin Gothic Medium';" class="form-label">Name:</label>
+                <InputText @bind-Value=contactModel.Name class="form-control mb-3" />
+
+                <label style="font-family: 'Franklin Gothic Medium';" class="form-label">Phone Number:</label>
+                <InputText @bind-Value=contactModel.Phone class="form-control mb-3" />
+
+                <label style="font-family: 'Franklin Gothic Medium';" class="form-label">Email:</label>
+                <InputText @bind-Value=contactModel.Email class="form-control mb-3" />
+
+                <label style="font-family: 'Franklin Gothic Medium';" class="form-label">What is your availability:</label>
+                <InputTextArea @bind-Value=contactModel.Availability class="form-control mb-3" />
+
+                <label style="font-family: 'Franklin Gothic Medium';" class="form-label">How would you like to volunteer:</label>
+                <InputTextArea @bind-Value=contactModel.Ability class="form-control mb-3" />
+
+                <DataAnnotationsValidator />
+                <ValidationSummary />
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </EditForm>
+        </div>
+    </div>
+
+@code {
+    ExampleModel contactModel = new();
+
+    public class ExampleModel
+    {
+        [Required]
+        [StringLength(256, ErrorMessage = "Name is too long.")]
+        public string Name { get; set; }
+        [Phone]
+        public string Phone{get;set;}
+        [EmailAddress]
+        public string Email{get;set;}
+        [StringLength(2048,ErrorMessage ="Please limit your comments to 2,048 characters")]
+        public string Availability {get;set;}
+        [StringLength(2048,ErrorMessage ="Please limit your comments to 2,048 characters")]
+        public string Ability {get;set;}
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        var body = contactModel.Availability + System.Environment.NewLine + System.Environment.NewLine + contactModel.Ability;
+        var template = "Contact Name: @Model.Name, Contact Phone Number: @Model.Phone, Contact Email: @Model.Email" + System.Environment.NewLine + body;
+
+        var email = Email
+            .From(contactModel.Email, contactModel.Name)
+            .To("volunteer", "Sanpete Pantry")
+            .Subject("Volunteer Email")
+            .UsingTemplate(template, new {Name = contactModel.Name, Phone = contactModel.Phone, Email = contactModel.Email });
+
+        try
+        {
+            await email.SendAsync();
+            navManager.NavigateTo("/volunteer");
+        }
+        catch(Exception e)
+        {
+            Console.WriteLine(e);
+        }
+    }
 }
