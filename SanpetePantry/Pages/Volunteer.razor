@@ -4,10 +4,32 @@
 
 <h1 style="font-family: 'Franklin Gothic Medium';" class="fw-bold text-center" >Volunteer</h1>
 
+<div class="py-5">
+    <h2 style="font-family: Gabriola;" class="fw-bold text-center">We rely on and appreciate our Volunteers!</h2>
+</div>
+
+<div class="container col col-xl-6">
+    <div class="row">
+        <div class="col">
+            <img src="/img/Volunteers.png" alt="Volunteers" width=100%/>
+        </div>
+        <div class="col">
+            <img src="/img/TeamAndVolunteers.png" alt="Team and Volunteers" width=100% />
+        </div>
+    </div>            
+    <div class="fs-5 pt-5">
+        Our volunteers are the life blood of our efforts. Without their hard work and dedication we could never be able to serve all of 
+        the people that we serve. We are always looking for more talented and enthusiastic people who believe in our cause of <span class="fst-italic">"Ending Hunger in Sanpete
+        County!"</span>
+    </div>
+</div>
+
+<div class="py-5">
+    <h2 style="font-family: Gabriola;" class="fw-bold text-center">Want To Volunteer? Contact Us!</h2>
+</div>
 
 <div class="row">
-    <div class="container w-50" style="margin: auto;">
-        <h3 style="font-family: Gabriola;" class="fw-bold text-center py-5">Want To Volunteer? Contact Us</h3>
+    <div class="container col col-md-6" style="margin: auto;">
         <EditForm Model=@contactModel OnValidSubmit=@HandleValidSubmit>
 
             <label style="font-family: 'Franklin Gothic Medium';" class="form-label">Name:</label>
@@ -52,25 +74,26 @@
         public string? Ability {get;set;}
     }
 
-    private async Task HandleValidSubmit()
+    private void HandleValidSubmit()
     {
-        var body = contactModel.Availability + System.Environment.NewLine + System.Environment.NewLine + contactModel.Ability;
-        var template = "Contact Name: @Model.Name, Contact Phone Number: @Model.Phone, Contact Email: @Model.Email" + System.Environment.NewLine + body;
+        string body = $"Contact Name: {contactModel.Name}<br />Contact Phone Number: {contactModel.Phone}<br />Contact Email: {contactModel.Email}<br /><br /><h3>Availability:</h3><br /><br />{contactModel.Availability}<br /><br /><h3>How they would like to Volunteer:</h3><br /><br />{contactModel.Ability}";
 
-        var email = Email
-            .From(contactModel.Email, contactModel.Name)
-            .To("volunteer", "Sanpete Pantry")
-            .Subject("Volunteer Email")
-            .UsingTemplate(template, new {Name = contactModel.Name, Phone = contactModel.Phone, Email = contactModel.Email });
+        using(MailMessage mail = new())
+        {
+            mail.From = new MailAddress("mrtannertrimble@gmail.com");
+            mail.To.Add("mrtannertrimble@gmail.com");
+            mail.Subject = "Volunteer Page Email";
+            mail.Body = body;
+            mail.IsBodyHtml = true;
 
-        try
-        {
-            await email.SendAsync();
-            navManager.NavigateTo("/volunteer");
+            using(SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587))
+            {
+                smtp.Credentials = new NetworkCredential("mrtannertrimble@gmail.com", "alma.soul77");
+                smtp.EnableSsl = true;
+                smtp.Send(mail);
+            }
         }
-        catch(Exception e)
-        {
-            Console.WriteLine(e);
-        }
+
+        navManager.NavigateTo("/thankyou");
     }
 }

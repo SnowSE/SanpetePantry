@@ -6,20 +6,19 @@
 
 <div class="container py-5">
     <div class="row">
-        <div class="col-lg-5">
+        <div class="col-xl-5">
             <img src="/img/ContactUs.webp" alt="Contact Us" width=100% />
         </div>
-        <div class="col-lg-1"></div>
+
         <div class="col-lg">
             <div class="row">
                 <h2 style="font-family: 'Franklin Gothic Medium';" class="text-center">We Want To Hear From You</h2>
             </div>
-            <div class="row">
-                <div>
+            <div class="row fs-5">
+                <div class="pb-2">
                     A nonprofit food pantry is as strong as the community that holds it up. Together, we can do more than we can do alone. 
                     Let's bring our abilities and passions together.
                 </div>
-                <br />
                 <div>
                     There are many ways to join us and support our mission. 
                     Contact us if you have questions or solutions, or click on the links to find out more about <a href="">Volunteer Opportunities</a>, 
@@ -27,15 +26,15 @@
                 </div> 
             </div>
             <div class="container pt-3">
-                <div class="d-flex justify-content-between">
-                    <div>
+                <div class="d-flex flex-column flex-md-row justify-content-between">
+                    <div class="text-center">
                         <h3 style="font-family: 'Franklin Gothic Medium';">Contact Info</h3>
                         <div>
                             <div>Phone Number: (435) 462-3006</div>
                             <div>Email: support@sanpetepantry.org</div>                            
                         </div>
                     </div>
-                    <div>
+                    <div class="text-center">
                         <h3 style="font-family: 'Franklin Gothic Medium';">Address</h3>
                         <div>
                             <div>1080 Blackhawk Boulevard,</div>
@@ -48,7 +47,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="container w-50" style="margin: auto;">
+        <div class="container col col-md-6" style="margin: auto;">
             <h3 style="font-family: Gabriola;" class="fw-bold text-center py-5">Have Questions or Solutions Let Us Know</h3>
             <EditForm Model=@contactModel OnValidSubmit=@HandleValidSubmit>
 
@@ -93,23 +92,26 @@
 
     private void HandleValidSubmit()
     {
-        Email.DefaultSender = new SmtpSender();
-        var template = "Contact Name: @Model.Name, Contact Phone Number: @Model.Phone, Contact Email: @Model.Email" + System.Environment.NewLine + "@Model.Message";
+        string text = $"Contact Name: {contactModel.Name}<br /> Contact Phone Number: {contactModel.Phone}<br /> Contact Email: {contactModel.Email}<br /><br />{contactModel.Message}";
 
-        var email = Email
-            .From(contactModel.Email, contactModel.Name)
-            .To("mrtannertrimble@gmail.com", "Sanpete Pantry")
-            .Subject("Contact Us Email")
-            .UsingTemplate(template, new { Name = contactModel.Name, Phone = contactModel.Phone, Email = contactModel.Email, Message = contactModel.Message});
+        string body = text.Replace("@", "@" + System.Environment.NewLine);
 
-        try
+        using(MailMessage mail = new())
         {
-            email.Send();
-            navManager.NavigateTo("/contact");
+            mail.From = new MailAddress("mrtannertrimble@gmail.com");
+            mail.To.Add("mrtannertrimble@gmail.com");
+            mail.Subject = "Contact Page Email";
+            mail.Body = body;
+            mail.IsBodyHtml = true;
+
+            using(SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587))
+            {
+                smtp.Credentials = new NetworkCredential("mrtannertrimble@gmail.com", "alma.soul77");
+                smtp.EnableSsl = true;
+                smtp.Send(mail);
+            }
         }
-        catch(Exception e)
-        {
-            Console.WriteLine(e);
-        }
+
+        navManager.NavigateTo("/thankyou");
     }
 }
