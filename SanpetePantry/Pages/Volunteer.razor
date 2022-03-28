@@ -90,6 +90,7 @@
             {
                 smtp.Credentials = new NetworkCredential("mrtannertrimble@gmail.com", "alma.soul77");
                 smtp.EnableSsl = true;
+                smtp.UseDefaultCredentials = false;
                 smtp.Send(mail);
             }
         }
