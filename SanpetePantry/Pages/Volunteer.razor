@@ -86,7 +86,7 @@
             mail.Body = body;
             mail.IsBodyHtml = true;
 
-            using(SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587))
+            using(SmtpClient smtp = new SmtpClient("smtp.gmail.com", 25))
             {
                 smtp.Credentials = new NetworkCredential("mrtannertrimble@gmail.com", "alma.soul77");
                 smtp.EnableSsl = true;

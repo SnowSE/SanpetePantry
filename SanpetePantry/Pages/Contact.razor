@@ -96,9 +96,7 @@
 
     private void HandleValidSubmit()
     {
-        string text = $"Contact Name: {contactModel.Name}<br /> Contact Phone Number: {contactModel.Phone}<br /> Contact Email: {contactModel.Email}<br /><br />{contactModel.Message}";
-
-        string body = text.Replace("@", "@" + System.Environment.NewLine);
+        string body = $"Contact Name: {contactModel.Name}<br /> Contact Phone Number: {contactModel.Phone}<br /> Contact Email: {contactModel.Email}<br /><br />{contactModel.Message}";
 
         using(MailMessage mail = new())
         {
@@ -108,7 +106,7 @@
             mail.Body = body;
             mail.IsBodyHtml = true;
 
-            using(SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587))
+            using(SmtpClient smtp = new SmtpClient("smtp.gmail.com", 25))
             {
                 smtp.Credentials = new NetworkCredential("mrtannertrimble@gmail.com", "alma.soul77");
                 smtp.EnableSsl = true;
