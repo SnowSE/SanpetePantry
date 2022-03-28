@@ -4,16 +4,16 @@
 
 <h1 style="font-family: 'Franklin Gothic Medium';" class="text-center">Contact Us</h1>
 
+<div class="py-5">
+    <h2 style="font-family: 'Gabriola';" class="text-center">We Want To Hear From You</h2>
+</div>
+
 <div class="container py-5">
     <div class="row">
         <div class="col-xl-5">
-            <img src="/img/ContactUs.webp" alt="Contact Us" width=100% />
+            <img class="img-fluid" src="/img/ContactUs.webp" alt="Contact Us" />
         </div>
-
         <div class="col-lg">
-            <div class="row">
-                <h2 style="font-family: 'Franklin Gothic Medium';" class="text-center">We Want To Hear From You</h2>
-            </div>
             <div class="row fs-5">
                 <div class="pb-2">
                     A nonprofit food pantry is as strong as the community that holds it up. Together, we can do more than we can do alone. 
@@ -46,9 +46,13 @@
             </div>
         </div>
     </div>
+
+    <div class="py-5">
+        <h3 style="font-family: Gabriola;" class="text-center py-3">Have Questions or Solutions Let Us Know</h3>
+    </div>
+    
     <div class="row">
         <div class="container col col-md-6" style="margin: auto;">
-            <h3 style="font-family: Gabriola;" class="fw-bold text-center py-5">Have Questions or Solutions Let Us Know</h3>
             <EditForm Model=@contactModel OnValidSubmit=@HandleValidSubmit>
 
                 <label style="font-family: 'Franklin Gothic Medium';" class="form-label">Name:</label>
