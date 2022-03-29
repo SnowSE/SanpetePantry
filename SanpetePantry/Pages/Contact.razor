@@ -100,17 +100,15 @@
 
         using(MailMessage mail = new())
         {
-            mail.From = new MailAddress("mrtannertrimble@gmail.com");
-            mail.To.Add("mrtannertrimble@gmail.com");
-            mail.Subject = "Contact Page Email";
+            mail.From = new MailAddress("Volunteer@sanpetepantry.org");
+            mail.To.Add("volunteer@sanpetepantry.org");
+            mail.Subject = "Contact Page: Email from website";
             mail.Body = body;
             mail.IsBodyHtml = true;
 
-            using(SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587))
+            using(SmtpClient smtp = new SmtpClient("sanpetepantry-org.mail.protection.outlook.com", 25))
             {
-                smtp.Credentials = new NetworkCredential("mrtannertrimble@gmail.com", "alma.soul77");
                 smtp.EnableSsl = true;
-                smtp.UseDefaultCredentials = false;
                 smtp.Send(mail);
             }
         }
