@@ -50,7 +50,8 @@
     <div class="py-5">
         <h3 style="font-family: Gabriola;" class="text-center py-3">Have Questions or Solutions Let Us Know</h3>
     </div>
-    
+    @if (DisplayForm){
+
     <div class="row">
         <div class="container col col-md-6" style="margin: auto;">
             <EditForm Model=@contactModel OnValidSubmit=@HandleValidSubmit>
@@ -75,12 +76,15 @@
             </EditForm>
         </div>
     </div>
+    }
+    <div>@ErrorMessage</div>
 </div>
 
 
 @code {
     ExampleModel contactModel = new();
-
+    string ErrorMessage = null;
+    bool DisplayForm = true;
     public class ExampleModel
     {
         [Required]
@@ -97,22 +101,29 @@
     private void HandleValidSubmit()
     {
         string body = $"Contact Name: {contactModel.Name}<br /> Contact Phone Number: {contactModel.Phone}<br /> Contact Email: {contactModel.Email}<br /><br />{contactModel.Message}";
+        try{
 
-        using(MailMessage mail = new())
-        {
-            mail.From = new MailAddress("Volunteer@sanpetepantry.org");
-            mail.To.Add("volunteer@sanpetepantry.org");
-            mail.Subject = "Contact Page: Email from website";
-            mail.Body = body;
-            mail.IsBodyHtml = true;
-
-            using(SmtpClient smtp = new SmtpClient("sanpetepantry-org.mail.protection.outlook.com", 25))
+            using(MailMessage mail = new())
             {
-                smtp.EnableSsl = true;
-                smtp.Send(mail);
+                mail.From = new MailAddress("Volunteer@sanpetepantry.org");
+                mail.To.Add("volunteer@sanpetepantry.org");
+                mail.Subject = "Contact Page: Email from website";
+                mail.Body = body;
+                mail.IsBodyHtml = true;
+
+                using(SmtpClient smtp = new SmtpClient("sanpetepantry-org.mail.protection.outlook.com", 25))
+                {
+                    smtp.EnableSsl = true;
+                    smtp.Send(mail);
+                }
             }
+            ErrorMessage = "Message sent!";
+            DisplayForm=false;
+            navManager.NavigateTo("/thankyou");
+        }
+        catch (Exception e){
+            ErrorMessage = e.Message;
         }
 
-        navManager.NavigateTo("/thankyou");
     }
 }
