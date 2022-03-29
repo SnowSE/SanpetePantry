@@ -13,7 +13,7 @@ services:
     image: linuxserver/swag:latest
     environment:
      - TZ=America/Denver
-     - URL=prod.sanpetepantry.org
+     - URL=sanpetepantry.org
      #- SUBDOMAINS=beta
      - VALIDATION=http
      #- STAGING=true
