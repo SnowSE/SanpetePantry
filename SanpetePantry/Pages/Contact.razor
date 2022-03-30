@@ -1,6 +1,8 @@
 ﻿@page "/contact"
 @using System.ComponentModel.DataAnnotations
+@using System.Net.Mail
 @inject NavigationManager navManager
+@inject IMailService mailService
 
 <h1 style="font-family: 'Franklin Gothic Medium';" class="text-center">Contact Us</h1>
 
@@ -98,27 +100,18 @@
         public string? Message{get;set;}
     }
 
-    private void HandleValidSubmit()
+    private async Task HandleValidSubmit()
     {
         ErrorMessage = "Sending Message...";
-        StateHasChanged();
         string body = $"Contact Name: {contactModel.Name}<br /> Contact Phone Number: {contactModel.Phone}<br /> Contact Email: {contactModel.Email}<br /><br />{contactModel.Message}";
-        try{
+        try
+        {
+            await mailService.SendMessageAsync(
+                "contact@sanpetepantry.org", 
+                "contact@sanpetepantry.org", 
+                "Contact Page: Email from website", 
+                body);
 
-            using(MailMessage mail = new())
-            {
-                mail.From = new MailAddress("contact@sanpetepantry.org");
-                mail.To.Add("contact@sanpetepantry.org");
-                mail.Subject = "Contact Page: Email from website";
-                mail.Body = body;
-                mail.IsBodyHtml = true;
-
-                using(SmtpClient smtp = new SmtpClient("sanpetepantry-org.mail.protection.outlook.com", 25))
-                {
-                    smtp.EnableSsl = true;
-                    smtp.Send(mail); 
-                }
-            }
             ErrorMessage = "Message sent!";
             DisplayForm=false;
             navManager.NavigateTo("/thankyou");
@@ -126,6 +119,5 @@
         catch (Exception e){
             ErrorMessage = e.Message;
         }
-
     }
 }
