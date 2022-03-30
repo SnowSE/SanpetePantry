@@ -83,7 +83,7 @@
 
 @code {
     ExampleModel contactModel = new();
-    string ErrorMessage = "...";
+    string ErrorMessage = "";
     bool DisplayForm = true;
     public class ExampleModel
     {
@@ -107,8 +107,8 @@
 
             using(MailMessage mail = new())
             {
-                mail.From = new MailAddress("Volunteer@sanpetepantry.org");
-                mail.To.Add("volunteer@sanpetepantry.org");
+                mail.From = new MailAddress("contact@sanpetepantry.org");
+                mail.To.Add("contact@sanpetepantry.org");
                 mail.Subject = "Contact Page: Email from website";
                 mail.Body = body;
                 mail.IsBodyHtml = true;
