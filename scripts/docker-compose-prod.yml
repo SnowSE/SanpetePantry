@@ -18,7 +18,7 @@ services:
      - VALIDATION=http
      #- STAGING=true
     volumes:
-     - ./default.conf:/config/nginx/site-confs/default
+     - ./default.conf:/config/nginx/site-confs/default:ro
      - cachedcerts:/config
     ports:
      - 443:443
