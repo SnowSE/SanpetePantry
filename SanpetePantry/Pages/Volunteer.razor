@@ -78,7 +78,7 @@
     private async Task HandleValidSubmit()
     {
         string body = $"Contact Name: {contactModel.Name}<br />Contact Phone Number: {contactModel.Phone}<br />Contact Email: {contactModel.Email}<br /><br /><h3>Availability:</h3><br /><br />{contactModel.Availability}<br /><br /><h3>How they would like to Volunteer:</h3><br /><br />{contactModel.Ability}";
-        await mailService.SendMessageAsync("volunteer@sanpetepantry.org", "volunteer@sanpetepantry.org", "Volunteer Page Email", body);
+        await mailService.SendMessageAsync("volunteer@sanpetepantry.org", "volunteer@sanpetepantry.org", "Volunteer Page Email", body, (_) => {});
         navManager.NavigateTo("/thankyou");
     }
 }
