@@ -4,10 +4,19 @@ namespace SanpetePantry.Services;
 
 public class MailKitMailService : IMailService
 {
-    public async Task SendMessageAsync(string from, string to, string subject, string body)
+    private const string SmptHost = "sanpetepantry-org.mail.protection.outlook.com";
+
+    public MailKitMailService()
+    {
+    }
+
+    public async Task SendMessageAsync(string from, string to, string subject, string body, Action<string>? log = null)
     {
         using var smtpClient = new MailKit.Net.Smtp.SmtpClient();
-        await smtpClient.ConnectAsync("sanpetepantry-org.mail.protection.outlook.com", 25, MailKit.Security.SecureSocketOptions.Auto);
+
+        log?.Invoke("Connecting to " + SmptHost);
+        await smtpClient.ConnectAsync(SmptHost, 25, MailKit.Security.SecureSocketOptions.Auto);
+
         var message = new MimeMessage();
         message.From.Add(new MailboxAddress(from, from));
         message.To.Add(new MailboxAddress(to, to));
@@ -16,7 +25,11 @@ public class MailKitMailService : IMailService
         {
             Text = body
         };
+
+        log?.Invoke("Attempting to send message");
         await smtpClient.SendAsync(message);
+
+        log?.Invoke("Disconnecting from server");
         await smtpClient.DisconnectAsync(true);
     }
 }
