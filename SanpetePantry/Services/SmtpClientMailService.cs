@@ -4,11 +4,11 @@ namespace SanpetePantry.Services;
 
 public class SmtpClientMailService : IMailService
 {
-    public Task SendMessageAsync(string from, string to, string subject, string body)
+    public Task SendMessageAsync(string from, string to, string subject, string body, Action<string>? log = null)
     {
         using var mail = new MailMessage()
         {
-            From = new MailAddress("contact@sanpetepantry.org"),            
+            From = new MailAddress("contact@sanpetepantry.org"),
             Subject = "Contact Page: Email from website",
             Body = body,
             IsBodyHtml = true
@@ -17,7 +17,7 @@ public class SmtpClientMailService : IMailService
 
         using var smtp = new SmtpClient("sanpetepantry-org.mail.protection.outlook.com", 25);
         smtp.EnableSsl = true;
-        smtp.Send(mail); 
+        smtp.Send(mail);
 
         return Task.CompletedTask;
     }
