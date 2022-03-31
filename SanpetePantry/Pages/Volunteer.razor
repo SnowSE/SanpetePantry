@@ -1,6 +1,7 @@
-﻿@using System.ComponentModel.DataAnnotations
+﻿@page "/volunteer"
+@using System.ComponentModel.DataAnnotations
 @inject NavigationManager navManager
-@page "/volunteer"
+@inject IMailService mailService
 
 <h1 style="font-family: 'Franklin Gothic Medium';" class="fw-bold text-center" >Volunteer</h1>
 
@@ -74,26 +75,10 @@
         public string? Ability {get;set;}
     }
 
-    private void HandleValidSubmit()
+    private async Task HandleValidSubmit()
     {
         string body = $"Contact Name: {contactModel.Name}<br />Contact Phone Number: {contactModel.Phone}<br />Contact Email: {contactModel.Email}<br /><br /><h3>Availability:</h3><br /><br />{contactModel.Availability}<br /><br /><h3>How they would like to Volunteer:</h3><br /><br />{contactModel.Ability}";
-
-        using(MailMessage mail = new())
-        {
-            mail.From = new MailAddress("Volunteer@sanpetepantry.org");
-            mail.To.Add("volunteer@sanpetepantry.org");
-
-            mail.Subject = "Volunteer Page Email";
-            mail.Body = body;
-            mail.IsBodyHtml = true;
-
-            using(SmtpClient smtp = new SmtpClient("sanpetepantry-org.mail.protection.outlook.com", 25))
-            {
-                smtp.EnableSsl = true;
-                smtp.Send(mail); 
-            }
-        }
-
+        await mailService.SendMessageAsync("volunteer@sanpetepantry.org", "volunteer@sanpetepantry.org", "Volunteer Page Email", body);
         navManager.NavigateTo("/thankyou");
     }
 }
