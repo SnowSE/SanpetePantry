@@ -31,9 +31,19 @@
         text-overflow: ellipsis;
     }
 
+#border-right {
+    border-right: 1px solid black !important;
+}
+
 @media (max-width: 854.98px) {
     .top-row:not(.auth) {
         display: none;
+    }
+
+    .main content #border-right {
+        border-right-style: none;
+        border-bottom-style: solid;
+        border-width: 1px;
     }
 
     .top-row.auth {
