@@ -50,7 +50,7 @@ jobs:
       run: echo ${{ steps.docker_build.outputs.digest }}
 
     - name: SFTP uploader
-      uses: wangyucode/sftp-upload-action@v1.1
+      uses: wangyucode/sftp-upload-action@v2.0.2
       with:
         host: ${{ secrets.LINODE_SERVER }}
         username: ${{ secrets.LINODE_USER }}
