@@ -3,7 +3,6 @@
 @using System.Net.Mail
 @inject NavigationManager navManager
 @inject IMailService mailService
-@rendermode InteractiveServer
 
 <h1 style="font-family: 'Franklin Gothic Medium';" class="text-center">Contact Us</h1>
 
@@ -57,7 +56,7 @@
 
     <div class="row">
         <div class="container col col-md-6" style="margin: auto;">
-            <EditForm Model=@contactModel OnValidSubmit=@HandleValidSubmit>
+            <EditForm method="post" Enhance Model=@contactModel OnValidSubmit=@HandleValidSubmit FormName="contactForm">
 
                 <label style="font-family: 'Franklin Gothic Medium';" class="form-label">Name:</label>
                 <InputText @bind-Value=contactModel.Name class="form-control mb-3" />
@@ -85,7 +84,8 @@
 
 
 @code {
-    ExampleModel contactModel = new();
+    [SupplyParameterFromForm]
+    ExampleModel contactModel { get; set; } = new();
     string ErrorMessage = "";
     bool DisplayForm = true;
     public class ExampleModel
@@ -117,10 +117,10 @@
 
             ErrorMessage = "Message sent!";
             DisplayForm=false;
-            navManager.NavigateTo("/thankyou");
         }
         catch (Exception e){
             ErrorMessage = e.Message;
         }
+        navManager.NavigateTo("thankyou");
     }
 }

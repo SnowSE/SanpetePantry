@@ -2,7 +2,6 @@
 @using System.ComponentModel.DataAnnotations
 @inject NavigationManager navManager
 @inject IMailService mailService
-@rendermode InteractiveServer
 
 <h1 style="font-family: 'Franklin Gothic Medium';" class="fw-bold text-center" >Volunteer</h1>
 
@@ -32,7 +31,7 @@
 
 <div class="row">
     <div class="container col col-md-6" style="margin: auto;">
-        <EditForm Model=@contactModel OnValidSubmit=@HandleValidSubmit>
+        <EditForm method="post" Enhance Model=@contactModel OnValidSubmit=@HandleValidSubmit FormName="volunteerForm">
 
             <label style="font-family: 'Franklin Gothic Medium';" class="form-label">Name:</label>
             <InputText @bind-Value=contactModel.Name class="form-control mb-3" />
@@ -59,7 +58,8 @@
 </div>
 
 @code {
-    ExampleModel contactModel = new();
+    [SupplyParameterFromForm]
+    ExampleModel contactModel{ get; set; } = new();
 
     public class ExampleModel
     {
