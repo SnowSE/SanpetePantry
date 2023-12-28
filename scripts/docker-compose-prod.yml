@@ -8,6 +8,8 @@ services:
     networks:
      pantrynet:
     restart: unless-stopped
+    volumes:
+     - ./data:/data
 
   reverseProxy:
     image: linuxserver/swag:latest
