@@ -2,7 +2,7 @@ version: '3.5'
 
 services:
   sanpetepantry:
-    image: ${DOCKER_REGISTRY-}sanpetepantry/web:${BuildID}
+    image: ${DOCKER_REGISTRY-}sanpetepantry/web
     #ports:
      #- 80:80
     networks:
