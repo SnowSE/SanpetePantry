@@ -14,30 +14,27 @@
 <div class="container py-5">
     <div class="row">
         <div class="col-xl-5">
-            <img class="img-fluid" src="/img/ContactUs.webp" alt="Contact Us" />
+            <img class="img-fluid" src="/img/ContactUsePic.jpg" alt="Contact Us" style="height: 100%;"/>
         </div>
         <div class="col-lg">
             <div class="row fs-5">
                 <div class="pb-2">
-                    A nonprofit food pantry is as strong as the community that holds it up. Together, we can do more than we can do alone.
-                    Let's bring our abilities and passions together.
+                    A nonprofit food pantry is as strong as the community that holds it up. Together, we can do more than we can do alone. Let's bring our abilities and passions together.
                 </div>
                 <div>
-                    There are many ways to join us and support our mission.
-                    Contact us if you have questions or solutions, or click on the links to find out more about <a href="https://sanpetepantry.org/volunteer">Volunteer Opportunities</a>,
-                    <a href="https://sanpetepantry.org/donate">Donation Opportunities</a>.
+                    There are many ways to join us and support our mission. Contact us if you have questions or solutions, or click on the links to find out more about <a href="https://sanpetepantry.org/volunteer">Volunteer Opportunities</a>, <a href="https://sanpetepantry.org/donate">Donation Opportunities</a>.
                 </div>
             </div>
             <div class="container pt-3">
                 <div class="d-flex flex-column flex-md-row justify-content-between">
-                    <div class="text-center">
+                    <div class="box text-center">
                         <h3 style="font-family: 'Franklin Gothic Medium';">Contact Info</h3>
                         <div>
                             <div>Phone Number: (435) 462-3006</div>
                             <div>Email: <a href="mailto:contact@sanpetepantry.org">contact@sanpetepantry.org</a></div>
                         </div>
                     </div>
-                    <div class="text-center">
+                    <div class="box text-center">
                         <h3 style="font-family: 'Franklin Gothic Medium';">Address</h3>
                         <div>
                             <div>1080 Blackhawk Boulevard,</div>
@@ -47,41 +44,46 @@
                     </div>
                 </div>
             </div>
+
+            <div class="d-flex justify-content-center">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3077.281904479546!2d-111.46990478529513!3d39.53069411697149!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x874c15293f14f34f%3A0xfc490ba809ab1af1!2s1080%20Blackhawk%20Blvd%2C%20Mt%20Pleasant%2C%20UT%2084647!5e0!3m2!1sen!2sus!4v1647997838249!5m2!1sen!2sus"
+                    width="100%" height="400em" style="border:0; margin-top:3em;" allowfullscreen="" loading="lazy">
+                </iframe>
+            </div>
         </div>
     </div>
 
     <div class="py-5">
-        <h3 style="font-family: Gabriola;" class="text-center py-3">Have Questions or Solutions Let Us Know</h3>
+        <h3 style="font-family: 'Gabriola';" class="text-center py-3">Have Questions or Solutions? Let Us Know</h3>
     </div>
-    @if (DisplayForm){
+    @if (DisplayForm) {
+        <div class="row">
+            <div class="container col col-md-6" style="margin: auto;">
+                <EditForm Model=@contactModel OnValidSubmit=@HandleValidSubmit>
+                    <label style="font-family: 'Franklin Gothic Medium';" class="form-label">Name:</label>
+                    <InputText @bind-Value=contactModel.Name class="form-control mb-3" />
 
-    <div class="row">
-        <div class="container col col-md-6" style="margin: auto;">
-            <EditForm Model=@contactModel OnValidSubmit=@HandleValidSubmit>
+                    <label style="font-family: 'Franklin Gothic Medium';" class="form-label">Phone Number:</label>
+                    <InputText @bind-Value=contactModel.Phone class="form-control mb-3" />
 
-                <label style="font-family: 'Franklin Gothic Medium';" class="form-label">Name:</label>
-                <InputText @bind-Value=contactModel.Name class="form-control mb-3" />
+                    <label style="font-family: 'Franklin Gothic Medium';" class="form-label">Email:</label>
+                    <InputText @bind-Value=contactModel.Email class="form-control mb-3" />
 
-                <label style="font-family: 'Franklin Gothic Medium';" class="form-label">Phone Number:</label>
-                <InputText @bind-Value=contactModel.Phone class="form-control mb-3" />
+                    <label style="font-family: 'Franklin Gothic Medium';" class="form-label">Message:</label>
+                    <InputTextArea @bind-Value=contactModel.Message class="form-control mb-3" />
 
-                <label style="font-family: 'Franklin Gothic Medium';" class="form-label">Email:</label>
-                <InputText @bind-Value=contactModel.Email class="form-control mb-3" />
-
-                <label style="font-family: 'Franklin Gothic Medium';" class="form-label">Message:</label>
-                <InputTextArea @bind-Value=contactModel.Message class="form-control mb-3" />
-
-                <DataAnnotationsValidator />
-                <ValidationSummary />
-                <div class="d-flex justify-content-center">
-                    <button type="submit" class="btn btn-outline-primary btn-lg">Send</button>
-                </div>
-            </EditForm>
+                    <DataAnnotationsValidator />
+                    <ValidationSummary />
+                    <div class="d-flex justify-content-center">
+                        <button type="submit" class="btn btn-outline-primary btn-lg">Send</button>
+                    </div>
+                </EditForm>
+            </div>
         </div>
-    </div>
     }
     <div>@ErrorMessage</div>
 </div>
+
 
 
 @code {
