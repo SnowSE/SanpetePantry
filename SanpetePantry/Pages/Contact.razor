@@ -3,7 +3,6 @@
 @using System.Net.Mail
 @inject NavigationManager navManager
 @inject IMailService mailService
-@rendermode InteractiveServer
 
 <h1 style="font-family: 'Franklin Gothic Medium';" class="text-center">Contact Us</h1>
 
@@ -56,6 +55,7 @@
     <div class="py-5">
         <h3 style="font-family: 'Gabriola';" class="text-center py-3">Have Questions or Solutions? Let Us Know</h3>
     </div>
+  
     @if (DisplayForm) {
         <div class="row">
             <div class="container col col-md-6" style="margin: auto;">
@@ -87,7 +87,8 @@
 
 
 @code {
-    ExampleModel contactModel = new();
+    [SupplyParameterFromForm]
+    ExampleModel contactModel { get; set; } = new();
     string ErrorMessage = "";
     bool DisplayForm = true;
     public class ExampleModel
@@ -119,10 +120,10 @@
 
             ErrorMessage = "Message sent!";
             DisplayForm=false;
-            navManager.NavigateTo("/thankyou");
         }
         catch (Exception e){
             ErrorMessage = e.Message;
         }
+        navManager.NavigateTo("thankyou");
     }
 }

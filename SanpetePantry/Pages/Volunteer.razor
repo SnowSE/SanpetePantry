@@ -14,9 +14,9 @@
         <div class="col">
             <img class="img-fluid" src="/img/VolunteerSolePicture.jpg" alt="Volunteers" />
         </div>
-    </div>            
+    </div>
     <div class="fs-5 pt-5">
-        Our volunteers are the life blood of our efforts. Without their hard work and dedication we could never be able to serve all of 
+        Our volunteers are the life blood of our efforts. Without their hard work and dedication we could never be able to serve all of
         the people that we serve. We are always looking for more talented and enthusiastic people who believe in our cause of <span class="fst-italic">"Ending Hunger in Sanpete
         County!"</span>
     </div>
@@ -28,7 +28,7 @@
 
 <div class="row">
     <div class="container col col-md-6" style="margin: auto;">
-        <EditForm Model=@contactModel OnValidSubmit=@HandleValidSubmit>
+        <EditForm method="post" Enhance Model=@contactModel OnValidSubmit=@HandleValidSubmit FormName="volunteerForm">
 
             <label style="font-family: 'Franklin Gothic Medium';" class="form-label">Name:</label>
             <InputText @bind-Value=contactModel.Name class="form-control mb-3" />
@@ -55,7 +55,8 @@
 </div>
 
 @code {
-    ExampleModel contactModel = new();
+    [SupplyParameterFromForm]
+    ExampleModel contactModel{ get; set; } = new();
 
     public class ExampleModel
     {
