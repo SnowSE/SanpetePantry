@@ -80,3 +80,10 @@
         padding-right: 1.5rem !important;
     }
 }
+
+@media (max-width: 1060px) {
+    .sidebar{
+        width: 100%;
+        font-size: small;
+    }
+}
