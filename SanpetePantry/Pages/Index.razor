@@ -1,5 +1,58 @@
 ﻿@page "/"
 
+@* <script>
+    function initializeCounters() {
+        const counters = document.querySelectorAll('.count');
+
+        const animateCounter = (counter) => {
+            const updateCount = () => {
+                const target = +counter.getAttribute('data-value');
+                let count = +counter.innerText;
+
+                console.log(`Animating counter with target: ${target}, current count: ${count}`);
+
+                const increment = target / 200;
+
+                if (count < target) {
+                    counter.innerText = Math.ceil(count + increment);
+                    setTimeout(updateCount, 10);
+                } else {
+                    counter.innerText = target;
+                    console.log(`Final count for target ${target} is ${counter.innerText}`);
+                }
+            };
+
+            updateCount();
+        };
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    console.log(`Counter ${entry.target} is intersecting`);
+                    animateCounter(entry.target); // Pass the observed element to animateCounter
+                    observer.unobserve(entry.target); // Optional: Unobserve the element after animation
+                }
+            });
+        });
+
+        counters.forEach(counter => {
+            counter.innerText = '0'; // Ensure counters start from 0
+            observer.observe(counter);
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", initializeCounters);
+    window.addEventListener("onload", initializeCounters);
+
+    window.addEventListener("pageshow", function() {
+    alert('Page equide');
+
+    // image is loaded at this time
+    alert(`Image size: ${img.offsetWidth}x${img.offsetHeight}`);
+  });
+</script> *@
+
+
 <div class="video-container">
     <video autoplay muted loop id="video-bg">
         <source src="/videos/HomePage.mp4" type="video/mp4">
@@ -29,12 +82,33 @@
         </div>
     </div>
 
+    @* <div class="stats">
+        <div>
+            <span class="count" data-value="3340">0</span>
+            <p id="not-percent">residents are food insecure</p>
+        </div>
+        <div>
+            <span class="count" data-value="1120">0</span>
+            <p id="not-percent">children are food insecure</p>
+        </div>
+        <div>
+            <span class="count" data-value="48">0</span>
+            <p>% students eligible for free or reduced meals</p>
+        </div>
+        <div>
+            <span class="count" data-value="241">0</span>
+            <p>% increase in food orders from 2021 to 2023</p>
+        </div>
+    </div> *@
+
+
     <div class="container">
         <div class="p-2">
             <div class="row">
                 <div class="col-4">
                     <div class="row p-1">
-                        <img class="img-fluid" src="/img/GreatPictureVioletShirt.jpg" alt="Smiling woman next to shelve" />
+                        <img class="img-fluid" src="/img/GreatPictureVioletShirt.jpg"
+                            alt="Smiling woman next to shelve" />
                     </div>
                 </div>
                 <div class="col-4">
@@ -68,14 +142,16 @@
                 <div class="text-center">
                     <h3 style="font-family: 'Franklin Gothic Medium';" class="fw-bold">Our Mission Statement</h3>
                     <p class="fs-5">
-                        Food security through providing timely access to food, warehousing food for difficult times, and building food production capabilities in our local communities.
+                        Food security through providing timely access to food, warehousing food for difficult times, and
+                        building food production capabilities in our local communities.
                     </p>
                 </div>
             </div>
             <div class="col-lg">
                 <h3 style="font-family: 'Franklin Gothic Medium';" class="fw-bold text-center">The Cities We Serve</h3>
                 <div class="text-center fs-5">
-                    Axtell, Centerfield, Chester, Ephraim, Fairview, Fayette, Fountain Green, Freedom, Gunnison, Indianola, Manti, Mayfield,
+                    Axtell, Centerfield, Chester, Ephraim, Fairview, Fayette, Fountain Green, Freedom, Gunnison,
+                    Indianola, Manti, Mayfield,
                     Milburn, Moroni, Mt. Pleasant, Spring City, Sterling, and Wales.
                 </div>
             </div>
@@ -95,9 +171,12 @@
             </div>
             <div class="col-lg">
                 <div class="d-flex justify-content-center align-items-center">
-                    <iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FSanpetePantry%2Fvideos%2F435094167899713%2F&show_text=false&width=560&t=0"
-                        width="560" height="314" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allow="autoplay;
-                        clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
+                    <iframe
+                        src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FSanpetePantry%2Fvideos%2F435094167899713%2F&show_text=false&width=560&t=0"
+                        width="560" height="314" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
+                        allow="autoplay;
+                        clipboard-write; encrypted-media; picture-in-picture; web-share"
+                        allowFullScreen="true"></iframe>
                 </div>
             </div>
         </div>

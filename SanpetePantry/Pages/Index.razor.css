@@ -44,3 +44,56 @@
 .main-title:hover{
     color: #a31319;
 }
+
+.stats {
+
+    animation: fadeInAnimation ease 5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
+}
+
+.stats div {
+    display: flex;
+
+    margin-top: 4em;
+
+}
+
+.count {
+    font-weight: bold;
+    color: darkgreen; 
+    display: inline-block;
+    min-width: 50px;
+    text-align: right;
+
+    font-size: 3em;
+}
+
+.stats p {
+    font-size: 3em;
+
+    font-family: "Futura Bk BT-Book", Helvetica;
+
+    font-weight: 700;
+    color: darkgreen; 
+}
+
+#not-percent {
+    margin-left: 0.5em;
+}
+
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
