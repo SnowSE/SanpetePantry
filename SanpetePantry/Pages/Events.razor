@@ -9,7 +9,7 @@
 
 <div class="events-container">
     <div class="event evening-of-giving">
-        <img class="event-img" src="/img/EofG.jpg" alt="evening of giving event">
+        <img class="event-img" src="/img/EofG.png" alt="evening of giving event">
         <div class="event-info">
             <h2>Evening of Giving</h2>
             <div>
@@ -28,7 +28,33 @@
                 <i class="fa-solid fa-gavel"></i>
                 <p>Live and Silent Auctions</p>
             </div>
-            <button class="auction-btn">Auction</button>
+            <div class="event-buttons">
+                <a href="https://sanpetepantry.app.neoncrm.com/nx/portal/neonevents/events#/events/2808">
+                    <button class="gala-btn">Attend & Support</button>
+                </a>
+                <a>
+                    <button class="auction-btn">Auction</button>
+                </a>
+                <a>
+                    <button id="sponsor-btn">Learn More</button>
+                </a>
+            </div>
         </div>
     </div>
 </div>
+
+<div id="sponsor-info">
+    <img src="/img/Sponsor-info.png">
+</div>
+
+<script>
+    document.getElementById("sponsor-btn").addEventListener("click", function() {
+        var div = document.getElementById("sponsor-info");
+        console.log("button has been clicked");
+        if (div.style.display === "none" || div.style.display === "") {
+            div.style.display = "block";
+        } else {
+            div.style.display = "none";
+        }
+    });
+</script>
