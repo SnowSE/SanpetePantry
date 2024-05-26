@@ -1,0 +1,13 @@
+#testimonies-ctn {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.testimony-ctn {
+    border: black;
+    margin: 0.5em;
+
+    flex: 0.5;
+
+    background-color: aqua;
+}
