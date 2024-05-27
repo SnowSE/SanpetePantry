@@ -1,0 +1,105 @@
+@page "/2024AuctionPartners"
+@rendermode InteractiveServer
+
+<h1>2024 Auction Sponsors</h1>
+
+<div id="gala-ctn">
+</div>
+
+<script>
+    async function loadSponsors() {
+        const galaContainer = document.querySelector("#gala-ctn");
+
+        try {
+            const response = await fetch("/sponsorships.json");
+            const allSponsors = await response.json();
+            
+            const galaSponsors = allSponsors["2024 Auction Partners"];
+            
+            galaSponsors.forEach(sponsor => {
+                console.log(sponsor);
+
+                const sponsorDiv = document.createElement('div');
+                sponsorDiv.className = "sponsor-div";              
+
+                const titleDiv = document.createElement('div');
+                titleDiv.innerText = sponsor.name;
+                titleDiv.className = "title-div";
+
+                const imgDiv = document.createElement('div');
+                imgDiv.className = "img-div";
+
+                const externalLink = document.createElement('a');
+                externalLink.href = sponsor["page-link"];
+
+                const img = document.createElement('img');
+                img.src = sponsor["image-link"];
+                img.className = "sponsor-img";
+
+                externalLink.appendChild(img);
+                imgDiv.appendChild(externalLink);
+
+                sponsorDiv.appendChild(imgDiv);
+                sponsorDiv.appendChild(titleDiv);
+
+                galaContainer.appendChild(sponsorDiv);
+            });
+        } catch (error) {
+            console.log("Error at 2023 Gala Sponsors", error);
+        }
+    }
+
+    loadSponsors();
+</script>
+
+<style>
+    #gala-ctn {
+    display: flex;
+    flex-wrap: wrap;
+
+    justify-content: center;
+    gap: 1em;
+}
+
+.sponsor-div {
+
+    border: 0.2em solid black;
+
+    flex-basis: 30%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    border-radius: 2em 2em 2em 2em;
+
+    background-color: #a31319;
+
+    transition: 0.5s;
+}
+
+.sponsor-div:hover {
+    flex-basis: 35%;
+}
+
+.sponsor-img {
+    max-width: 20em;
+    max-height: 12em;
+
+    min-width: 10em;
+    min-height: 5em;
+}
+
+.title-div {
+    font-size: x-large;
+
+    font-weight: 300;
+
+    color: white;
+}
+
+h1 {
+    margin: 1em;
+}
+</style>
