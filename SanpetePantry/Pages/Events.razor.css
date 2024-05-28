@@ -64,6 +64,21 @@ i{
     background-color: darkgreen; 
 }
 
+.become-btn {
+    background-color: rgb(48, 195, 48);
+    color: black;
+    padding: 10px 20px; 
+    cursor: pointer;
+    width: 100%;
+    border: solid black 3px;
+
+    font-size: xx-large;
+}
+
+.become-btn:hover {
+    background-color: darkgreen;
+}
+
 #sponsor-btn {
     background-color: lightblue;
     color: black;

@@ -45,6 +45,36 @@
     color: #a31319;
 }
 
+.four-pic-ctn {
+
+    display: flex;
+    flex-wrap: wrap; 
+
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+
+    margin-top: 8em;
+}
+
+.four-pic-ctn div {
+    flex-basis: 50%;
+}
+
+.four-pic-ctn img {
+    max-width: 100%;
+}
+
+#logo-ctn {
+    margin-top: 8em;
+}
+
+#logo-main {
+    max-width: 80%;
+}
+
+
+
 .stats {
 
     animation: fadeInAnimation ease 5s;

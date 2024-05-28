@@ -52,6 +52,7 @@ a img {
     text-decoration: none;
     display: block;
     text-align: left;
+    text-shadow: none;
 }
 
 #dropdown:hover .dropdown-content {

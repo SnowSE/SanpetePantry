@@ -56,7 +56,7 @@
         <div class="col"></div>
         <div class="col-lg-6">
             <div class="py-4">
-                <img class="img-fluid" src="/img/SmilingGuy.jpg" alt="Services Picture"/>
+                <img class="img-fluid" src="https://umwa.org/wp-content/uploads/2021/01/Untitled-design.jpg.webp" alt="Services Picture"/>
             </div>
         </div>
     </div>
@@ -87,9 +87,16 @@
                     <div class="p-2">
                         Fountain Green - At the Fire Station
                     </div>
+                    <div>
+                        <button id="schedule-btn"> Learn More </button>
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
+
+    <div id="schedule-ctn" style="display: none;">
+        <img src="/img/MobileDropSchedule.png" style="max-width: 100%;">
     </div>
 </div>
 
@@ -117,3 +124,30 @@
         </div>
     </div>
 </div>
+
+<script>
+    document.getElementById("schedule-btn").addEventListener("click", function() {
+        var div = document.getElementById("schedule-ctn");
+
+        if (div.style.display === "none" || div.style.display === "") {
+            div.style.display = "block";
+        } else {
+            div.style.display = "none";
+        }
+    });
+</script>
+
+<style>
+    #schedule-btn {
+        width: 100%;
+        margin-top: 2em;
+        background-color: green;
+        color: white;
+        padding: 0.5em;
+
+    }
+
+    #schedule-btn:hover {
+        background-color: darkgreen;
+    }
+</style>
