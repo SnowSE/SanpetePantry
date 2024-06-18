@@ -1,4 +1,6 @@
 ﻿@page "/our-services"
+@rendermode InteractiveServer
+
 <h1 style="font-family: 'Franklin Gothic Medium';" class="text-center fw-bold">Our Services</h1>
 
 <h2 class="text-center pt-5" style="font-family: Gabriola;">We Provide a Number of Services to the Communities We Serve</h2>
@@ -62,7 +64,6 @@
     </div>
 </div>
 
-
 <div class="container">
     <div class="py-5">
         <h3 style="font-family: 'Franklin Gothic Medium';" class="fw-bold">We Come To You</h3>
@@ -88,7 +89,7 @@
                         Fountain Green - At the Fire Station
                     </div>
                     <div>
-                        <button id="schedule-btn"> Learn More </button>
+                        <button id="schedule-btn" href="kidspacks"> Learn More </button>
                     </div>
                 </div>
             </div>
@@ -111,6 +112,7 @@
                 <div class="fst-italic">"We don't want anyone in Sanpete County or anywhere in the state of Utah, especially our children, to go hungry. That is why we do this." </div>
                 <br />
                 Our Kid Pack program has the goal to make sure that every child gets enough food to last the weekend when they can't rely on school lunches.
+                <a href="kidspacks">Learn More</a>
 
             </div>
         </div>
@@ -125,7 +127,7 @@
     </div>
 </div>
 
-<script>
+@* <script>
     document.getElementById("schedule-btn").addEventListener("click", function() {
         var div = document.getElementById("schedule-ctn");
 
@@ -135,7 +137,7 @@
             div.style.display = "none";
         }
     });
-</script>
+</script> *@
 
 <style>
     #schedule-btn {
