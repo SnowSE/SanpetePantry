@@ -3,7 +3,8 @@
 
 <h1 style="font-family: 'Franklin Gothic Medium';" class="text-center fw-bold">Our Services</h1>
 
-<h2 class="text-center pt-5" style="font-family: Gabriola;">We Provide a Number of Services to the Communities We Serve</h2>
+<h2 class="text-center pt-5" style="font-family: Gabriola;">We Provide a Number of Services to the Communities We Serve
+</h2>
 
 <div class="container">
     <div class="py-5">
@@ -58,7 +59,8 @@
         <div class="col"></div>
         <div class="col-lg-6">
             <div class="py-4">
-                <img class="img-fluid" src="https://umwa.org/wp-content/uploads/2021/01/Untitled-design.jpg.webp" alt="Services Picture"/>
+                <img class="img-fluid" src="https://umwa.org/wp-content/uploads/2021/01/Untitled-design.jpg.webp"
+                    alt="Services Picture" />
             </div>
         </div>
     </div>
@@ -76,7 +78,9 @@
             <div class="row">
                 <div class="fs-5">
                     <div class="p-2">
-                        We perform Mobile Food drops all over Sanpete County. Follow us on <a target="_blank" href="https://www.facebook.com/SanpetePantry/">Facebook</a> to get news on when and where our
+                        We perform Mobile Food drops all over Sanpete County. Follow us on <a target="_blank"
+                            href="https://www.facebook.com/SanpetePantry/">Facebook</a> to get news on when and where
+                        our
                         next Mobile Food drop will happen.
                     </div>
                     <div class="p-2">
@@ -89,15 +93,13 @@
                         Fountain Green - At the Fire Station
                     </div>
                     <div>
-                        <button id="schedule-btn" href="kidspacks"> Learn More </button>
+                        <a href="mobiledrop">
+                            <button class="schedule-btn"> Learn More </button>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-
-    <div id="schedule-ctn" style="display: none;">
-        <img src="/img/MobileDropSchedule.png" style="max-width: 100%;">
     </div>
 </div>
 
@@ -109,47 +111,46 @@
     <div class="row">
         <div class="col-xl-4">
             <div class="fs-5">
-                <div class="fst-italic">"We don't want anyone in Sanpete County or anywhere in the state of Utah, especially our children, to go hungry. That is why we do this." </div>
+                <div class="fst-italic">"We don't want anyone in Sanpete County or anywhere in the state of Utah,
+                    especially our children, to go hungry. That is why we do this." </div>
                 <br />
-                Our Kid Pack program has the goal to make sure that every child gets enough food to last the weekend when they can't rely on school lunches.
-                <a href="kidspacks">Learn More</a>
+                Our Kid Pack program has the goal to make sure that every child gets enough food to last the weekend
+                when they can't rely on school lunches.
 
+                <div>
+                    <a href="kidspacks">
+                        <button class="schedule-btn"> Learn More </button>
+                    </a>
+                </div>
             </div>
         </div>
         <div class="col-xl">
             <div class="d-flex justify-content-center">
-                <iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FSanpetePantry%2Fvideos%2F1423700497962197%2F&show_text=false&width=500&t=0"
-                    width="500" height="300" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" 
+                <iframe
+                    src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FSanpetePantry%2Fvideos%2F1423700497962197%2F&show_text=false&width=500&t=0"
+                    width="600" height="400" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
+                    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
                     allowFullScreen="true"></iframe>
             </div>
-            
+
         </div>
     </div>
 </div>
 
-@* <script>
-    document.getElementById("schedule-btn").addEventListener("click", function() {
-        var div = document.getElementById("schedule-ctn");
-
-        if (div.style.display === "none" || div.style.display === "") {
-            div.style.display = "block";
-        } else {
-            div.style.display = "none";
-        }
-    });
-</script> *@
-
 <style>
-    #schedule-btn {
+    .schedule-btn {
         width: 100%;
         margin-top: 2em;
         background-color: green;
         color: white;
         padding: 0.5em;
 
+        border-radius: 4em 0 4em 0;
+
+
     }
 
-    #schedule-btn:hover {
+    .schedule-btn:hover {
         background-color: darkgreen;
     }
 </style>
