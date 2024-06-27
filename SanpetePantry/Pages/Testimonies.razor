@@ -9,14 +9,19 @@
 
 <div class="vid-test">
     <div>
-        <iframe src="https://drive.google.com/file/d/1Momzmy0UK2Tqcc_q1KYBk0oKRGSy_5fJ/preview" allow="autoplay"></iframe>
-        <span>Helping Families</span>
+        <iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FSanpetePantry%2Fvideos%2F2162051310860757%2F&show_text=false&width=560&t=0" allow="autoplay"></iframe>
+        <span class="title">Helping Families</span>
         <p>"We're really grateful we have a pantry here"</p>
     </div>
     <div>
-        <iframe src="https://drive.google.com/file/d/1vo8_QjZroPA6da6VZ21JcSvebOLPe3Oo/preview" allow="autoplay"></iframe>
-        <span>Helping our community</span>
+        <iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FSanpetePantry%2Fvideos%2F462577876712773%2F&show_text=false&width=560&t=0" allow="autoplay"></iframe>
+        <span class="title">Helping our community</span>
         <p>"We're thankful this place is here"</p>
+    </div>
+    <div>
+        <iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FSanpetePantry%2Fvideos%2F1016214606693654%2F&show_text=false&width=560&t=0"  allow="autoplay"></iframe>
+        <span class="title">Making a difference</span>
+        <p>"The food bank is a good help but they need more donations"</p>
     </div>
 </div>
 
@@ -166,29 +171,26 @@
         padding: 1em;
     }
 
-    .vid-test {
-        display: flex;
-        flex-direction: row;
+ .vid-test {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap; 
+}
 
-        justify-content: center;
-    }
+.vid-test div {
+    flex: 0 1 45%;
+    margin: 1em;
+    align-items: center;
+    box-sizing: border-box; 
+}
 
-    .vid-test div{
-        flex: 0.4;
-
-        display: flex;
-        flex-direction: column;
-
-        margin: 1em;
-
-        align-items: center;
-    }
 
     .vid-test div *{
         margin: 0.5em;
     }
 
-    div span {
+    .title {
         font-size: 2em;
         font-weight: 600;
 
