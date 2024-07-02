@@ -64,7 +64,7 @@
     @if (DisplayForm) {
         <div class="row">
             <div class="container col col-md-6" style="margin: auto;">
-                <EditForm Model=@contactModel OnValidSubmit=@HandleValidSubmit>
+                <EditForm Model=@contactModel OnValidSubmit=@HandleValidSubmit FormName="contactForm">
                     <label style="font-family: 'Franklin Gothic Medium';" class="form-label">Name:</label>
                     <InputText @bind-Value=contactModel.Name class="form-control mb-3" />
 

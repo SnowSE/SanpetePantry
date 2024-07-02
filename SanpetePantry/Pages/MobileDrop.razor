@@ -42,20 +42,22 @@
 <style>
     .main-title {
         position: absolute;
-        top: 20%;
-        left: 20%;
+        top: 50%;
+        left: 50%;
         transform: translate(-50%, -50%);
         z-index: 1;
 
         font-size: 5em;
-        font-weight: 300;
-        color: darkgreen
+        color: white;
+        font-weight: 200;
     }
 
     .main-img {
         width: 100%;
         clip-path: polygon(0 0, 100% 0, 100% 70%, 0 100%);
         z-index: -1;
+
+        filter: brightness(50%);
 
     }
 
@@ -87,7 +89,7 @@
     .section p {
         margin: 0;
         flex: 1;
-        font-size: large;
+        font-size: 1.5em;
     }
 
     .btn-ctn {

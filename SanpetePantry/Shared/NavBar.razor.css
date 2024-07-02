@@ -119,3 +119,58 @@ a img {
     background-color: rgba(255, 255, 255, 0.1);
     color: white;
 }
+
+@media (max-width: 1155px) {
+    .navbar-layout div{
+        font-size: small;
+    }
+}
+@media (min-width: 898px) {
+    .ham-menu{
+        display: none;
+    }
+    
+}
+@media (max-width: 897px) {
+    .navbar-layout div{
+        font-size: small;
+    }
+
+    .navbar-layout {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    .ham-menu {
+        display: block;
+    }
+
+    .ham-menu:hover {
+        cursor: pointer;
+    }
+
+    .tabs {
+        display: none;
+    }
+
+    #dropdown{
+        display: none;
+    }
+
+    a img {
+        height: 4em;
+        width: 14em;
+        background-color: white;
+        padding: 0.3em;
+    }
+}
+
+@media (max-width: 630px){
+    .navbar-layout{
+        width: 100%;
+        margin: 0;
+    }
+
+}

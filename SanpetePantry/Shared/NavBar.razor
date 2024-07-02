@@ -1,14 +1,22 @@
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+
 <nav class="navbar-layout">
     <div>
         <a class="nav-link" href=""> <img src="/img/AppleLogo_Portrait.png" alt="Logo and Name"></a>
     </div>
-    <div>
+    <div class="ham-menu">
+        <i class="fa-solid fa-bars" style="font-size: 4em;"></i>
+    </div>
+    <div class="tabs">
         <a class="nav-link" href="our-services"> Our Services </a>
     </div>
-    <div>
+    <div class="tabs">
         <a class="nav-link" href="events">Events</a>
     </div>
-    <div>
+    <div class="tabs">
         <a class="nav-link" href="volunteer"> Volunteer </a>
     </div>
     <div class="nav-link" id="dropdown">
@@ -20,13 +28,39 @@
             <a class="nav-link" href="FoundationsAndCompanies">Foundations and Companies</a>
         </div>
     </div>
-    <div>
+    <div class="tabs">
         <a class="nav-link" href="testimonies">Our stories</a>
-    </div> 
-    <div>
+    </div>
+    <div class="tabs">
         <a class="nav-link" href="contact"> Contact Us & Hours</a>
     </div>
-    <div>
+    <div class="tabs">
         <a class="nav-link" href="donate" id="donate-btn"> Donate </a>
     </div>
 </nav>
+
+<script>
+
+    const openMenu = function () {
+        console.log("xd");
+        const tabs = document.querySelectorAll('.tabs');
+        const navContainer = document.querySelector('.navbar-layout');
+
+        tabs.forEach(tab => {
+            if (tab.style.display == 'none') {
+                tab.style.display = 'block';
+                navContainer.style.flexDirection = 'column';
+
+            } else {
+                tab.style.display = 'none';
+                navContainer.style.flexDirection = 'row';
+
+            }
+        });
+
+
+    }
+
+    const hamburgerMenu = document.querySelector('.ham-menu');
+    hamburgerMenu.addEventListener('click', openMenu); 
+</script>
