@@ -73,42 +73,48 @@
 
 .stats {
 
-    animation: fadeInAnimation ease 5s;
+    animation: fadeInAnimation ease 10s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
 
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
 
-    font-family: Arial, sans-serif;
+    align-items: center;
+    justify-content: center;
+
     line-height: 1.5;
+
+    flex-wrap: wrap;
+
+    font-weight: 200;
 }
 
 .stats div {
     display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center;
 
     margin-top: 4em;
+
+    flex: 50%;
 
 }
 
 .count {
-    font-weight: bold;
-    color: darkgreen; 
-    display: inline-block;
-    min-width: 50px;
-    text-align: right;
 
-    font-size: 3em;
+    flex: 0 1 90%;
+
+    font-size: 8em;
 }
 
 .stats p {
-    font-size: 3em;
+    font-size: 1.8em;
 
     font-family: "Futura Bk BT-Book", Helvetica;
 
-    font-weight: 700;
-    color: darkgreen; 
+    font-weight: 200;
 }
 
 #not-percent {

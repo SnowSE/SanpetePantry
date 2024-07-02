@@ -1,6 +1,8 @@
 ﻿@page "/"
+@inject IJSRuntime JS
+@rendermode InteractiveServer
 
-@* <script>
+<script>
     function initializeCounters() {
         const counters = document.querySelectorAll('.count');
 
@@ -8,17 +10,13 @@
             const updateCount = () => {
                 const target = +counter.getAttribute('data-value');
                 let count = +counter.innerText;
-
-                console.log(`Animating counter with target: ${target}, current count: ${count}`);
-
                 const increment = target / 200;
 
                 if (count < target) {
                     counter.innerText = Math.ceil(count + increment);
-                    setTimeout(updateCount, 10);
+                    setTimeout(updateCount, 20);
                 } else {
                     counter.innerText = target;
-                    console.log(`Final count for target ${target} is ${counter.innerText}`);
                 }
             };
 
@@ -28,29 +26,20 @@
         const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    console.log(`Counter ${entry.target} is intersecting`);
-                    animateCounter(entry.target); // Pass the observed element to animateCounter
-                    observer.unobserve(entry.target); // Optional: Unobserve the element after animation
+                    animateCounter(entry.target); 
+                    observer.unobserve(entry.target); 
                 }
             });
         });
 
         counters.forEach(counter => {
-            counter.innerText = '0'; // Ensure counters start from 0
+            counter.innerText = '0'; 
             observer.observe(counter);
         });
     }
 
-    document.addEventListener("DOMContentLoaded", initializeCounters);
-    window.addEventListener("onload", initializeCounters);
+</script>
 
-    window.addEventListener("pageshow", function() {
-    alert('Page equide');
-
-    // image is loaded at this time
-    alert(`Image size: ${img.offsetWidth}x${img.offsetHeight}`);
-  });
-</script> *@
 
 
 <div class="video-container">
@@ -82,7 +71,7 @@
         </div>
     </div>
 
-    @* <div class="stats">
+    <div class="stats">
         <div>
             <span class="count" data-value="3340">0</span>
             <p id="not-percent">residents are food insecure</p>
@@ -99,7 +88,7 @@
             <span class="count" data-value="241">0</span>
             <p>% increase in food orders from 2021 to 2023</p>
         </div>
-    </div> *@
+    </div>
 
 
     <div class="four-pic-ctn">
@@ -167,3 +156,11 @@
         </div>
     </div>
 </div>
+
+@code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await JS.InvokeVoidAsync("initializeCounters");
+    }
+
+}

@@ -121,9 +121,23 @@ a div{
     }
 }
 
-@media (max-width: 1060px) {
+@media (max-width: 1155px) {
     .sidebar {
         width: 100%;
-        font-size: small;
+        font-size: 100px;
+        position: sticky;
+
     }
+}
+
+@media (max-width: 630px){
+    .page{
+        width: 100%;
+        padding: 0;
+    }
+
+    body{
+        width: 100%;
+    }
+
 }
