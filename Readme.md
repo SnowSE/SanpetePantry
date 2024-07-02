@@ -1,5 +1,24 @@
 # Sanpete Pantry
 
+## Table of Contents
+
+---
+
+1. <a href="#introduction">Introduction</a>
+2. <a href="#config">Config & Setup</a>
+
+---
+
+<div id="introduction"></div>
+
+## Introduction
+
+<img width="200" alt="logo" src="./SanpetePantry/wwwroot/img/Logo.webp" />
+
+Sanpete Pantry is the Food Pantry for Sanpete County and is dedicated to eliminating hunger in Sanpete County. This is the repository for our public website: [Visit here](https://SanpetePantry.org)
+
+<div id="config"></div>
+
 ## Config & Setup Notes
 - Logged in as root:
     - `apt install docker.io`

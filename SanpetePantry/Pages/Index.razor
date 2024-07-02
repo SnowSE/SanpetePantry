@@ -1,11 +1,65 @@
 ﻿@page "/"
+@inject IJSRuntime JS
+@rendermode InteractiveServer
+
+<script>
+    function initializeCounters() {
+        const counters = document.querySelectorAll('.count');
+
+        const animateCounter = (counter) => {
+            const updateCount = () => {
+                const target = +counter.getAttribute('data-value');
+                let count = +counter.innerText;
+                const increment = target / 200;
+
+                if (count < target) {
+                    counter.innerText = Math.ceil(count + increment);
+                    setTimeout(updateCount, 20);
+                } else {
+                    counter.innerText = target;
+                }
+            };
+
+            updateCount();
+        };
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter(entry.target); 
+                    observer.unobserve(entry.target); 
+                }
+            });
+        });
+
+        counters.forEach(counter => {
+            counter.innerText = '0'; 
+            observer.observe(counter);
+        });
+    }
+
+</script>
+
+
+
+<div class="video-container">
+    <video autoplay muted loop id="video-bg">
+        <source src="/videos/HomePage.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <div class="content">
+        <h1 class="main-title">SANPETE PANTRY</h1>
+        <p class="main-subtitle">Sanpete Takes Care Of Its Own</p>
+    </div>
+</div>
 
 <div style="margin: auto;" class="container">
-    <div class="container">
+
+    <div class="container" id="logo-ctn">
         <div class="grid">
             <div class="row">
                 <div class="col-lg-5">
-                    <img class="img-fluid" src="/img/LogoName.webp" alt="Logo and Name" />
+                    <img class="img-fluid" id="logo-main" src="/img/AppleLogo_Main.svg" alt="Logo and Name" />
                 </div>
                 <div class="col-lg d-flex justify-content-center align-items-center">
                     <div style="font-family: Gabriola;">
@@ -17,32 +71,38 @@
         </div>
     </div>
 
-    <div class="container">
-        <div class="p-2">
-            <div class="row">
-                <div class="col-4">
-                    <div class="row p-1">
-                        <img class="img-fluid" src="/img/FoodPantry.webp" alt="Food Pantry" />
-                    </div>                
-                </div>
-                <div class="col-4">
-                    <div class="grid">
-                        <div class="row p-1">
-                            <img class="img-fluid" src="/img/FoodTruck.webp" alt="Food Truck" />
-                        </div>
-                        <div class="row p-1">
-                            <img class="img-fluid" src="/img/BoxesFood.webp" alt="Boxes of Food" />
-                        </div>
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div class="grid">
-                        <div class="row p-1">
-                            <img class="img-fluid" src="/img/FoodDrive2.webp" alt="Food Drive 2" />
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="stats">
+        <div>
+            <span class="count" data-value="3340">0</span>
+            <p id="not-percent">residents are food insecure</p>
+        </div>
+        <div>
+            <span class="count" data-value="1120">0</span>
+            <p id="not-percent">children are food insecure</p>
+        </div>
+        <div>
+            <span class="count" data-value="48">0</span>
+            <p>% students eligible for free or reduced meals</p>
+        </div>
+        <div>
+            <span class="count" data-value="241">0</span>
+            <p>% increase in food orders from 2021 to 2023</p>
+        </div>
+    </div>
+
+
+    <div class="four-pic-ctn">
+        <div>
+            <img src="/img/LadiesSmiling.JPG" alt="Group of smiling ladies" />
+        </div>
+        <div>
+            <img src="/img/MyletMainPage.jpg" alt="Group of smiling ladies" />
+        </div>
+        <div>
+            <img src="/img/SCMainPage.jpg" alt="Group of smiling ladies" />
+        </div>
+        <div>
+            <img src="/img/VolunteerMainPage.jpg" alt="Group of smiling ladies" />
         </div>
     </div>
 
@@ -56,17 +116,16 @@
                 <div class="text-center">
                     <h3 style="font-family: 'Franklin Gothic Medium';" class="fw-bold">Our Mission Statement</h3>
                     <p class="fs-5">
-                        "Sanpete Pantry is dedicated to helping those who are struggling financially in Sanpete County by providing the opportunity
-                        to obtain food and other resources at no cost to them with dignity and respect while involving the community in a way that 
-                        inspires them to serve their neighbors with empathy, respect, and compassion." Our food pantry is your food pantry. 
-                        Our community charitable organization is here to serve all of us in Sanpete County, Utah.
+                        Food security through providing timely access to food, warehousing food for difficult times, and
+                        building food production capabilities in our local communities.
                     </p>
                 </div>
             </div>
             <div class="col-lg">
                 <h3 style="font-family: 'Franklin Gothic Medium';" class="fw-bold text-center">The Cities We Serve</h3>
                 <div class="text-center fs-5">
-                    Axtell, Centerfield, Chester, Ephraim, Fairview, Fayette, Fountain Green, Freedom, Gunnison, Indianola, Manti, Mayfield,
+                    Axtell, Centerfield, Chester, Ephraim, Fairview, Fayette, Fountain Green, Freedom, Gunnison,
+                    Indianola, Manti, Mayfield,
                     Milburn, Moroni, Mt. Pleasant, Spring City, Sterling, and Wales.
                 </div>
             </div>
@@ -86,22 +145,22 @@
             </div>
             <div class="col-lg">
                 <div class="d-flex justify-content-center align-items-center">
-                    <iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FSanpetePantry%2Fvideos%2F435094167899713%2F&show_text=false&width=560&t=0" 
-                        width="560" height="314" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allow="autoplay; 
-                        clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
+                    <iframe
+                        src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FSanpetePantry%2Fvideos%2F435094167899713%2F&show_text=false&width=560&t=0"
+                        width="560" height="314" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
+                        allow="autoplay;
+                        clipboard-write; encrypted-media; picture-in-picture; web-share"
+                        allowFullScreen="true"></iframe>
                 </div>
             </div>
         </div>
     </div>
-
-    <div class="py-5">
-        <h2 class="text-center py-5" style="font-family: Gabriola;">Where We Are Located</h2>
-    </div>
-
-    <div class="container">
-        <div class="d-flex justify-content-center">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3077.281904479546!2d-111.46990478529513!3d39.53069411697149!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x874c15293f14f34f%3A0xfc490ba809ab1af1!2s1080%20Blackhawk%20Blvd%2C%20Mt%20Pleasant%2C%20UT%2084647!5e0!3m2!1sen!2sus!4v1647997838249!5m2!1sen!2sus" 
-            width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-        </div>
-    </div>
 </div>
+
+@code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await JS.InvokeVoidAsync("initializeCounters");
+    }
+
+}

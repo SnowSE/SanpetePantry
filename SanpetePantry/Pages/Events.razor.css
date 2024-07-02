@@ -1,0 +1,130 @@
+.event {
+    display: flex;
+    flex-direction: row;
+    width: 100%; 
+    box-shadow: 4px 4px 4px 4px #888888;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.event:hover {
+    transform: scale(1.01); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.event-info {
+    flex: 1;
+    border: 1px solid #000; 
+    box-sizing: border-box; 
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    font-size: large;
+}
+
+h2 {
+    margin-bottom: 1em;
+}
+
+.event-img {
+    width: 50%;
+    display: block;
+}
+
+.event-info > div {
+    display: flex;
+}
+
+i{
+    margin-right: 10px;
+}
+
+.auction-btn {
+    background-color: #ffd700; 
+    color: black; 
+    padding: 10px 20px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
+}
+
+.auction-btn:hover {
+    background-color: #9b7d05; 
+}
+
+.gala-btn {
+    background-color: rgb(48, 195, 48);
+    color: black;
+    padding: 10px 20px; 
+    cursor: pointer;
+}
+
+.gala-btn:hover {
+    background-color: darkgreen; 
+}
+
+.become-btn {
+    background-color: rgb(48, 195, 48);
+    color: black;
+    padding: 10px 20px; 
+    cursor: pointer;
+    width: 100%;
+    border: solid black 3px;
+
+    font-size: xx-large;
+}
+
+.become-btn:hover {
+    background-color: darkgreen;
+}
+
+#sponsor-btn {
+    background-color: lightblue;
+    color: black;
+    padding: 10px 20px; 
+    cursor: pointer;
+}
+
+#sponsor-btn:hover {
+    background-color: rgb(81, 81, 150); 
+}
+
+#sponsor-info img{
+    width: 100%;
+}
+
+#sponsor-info {
+    display: none;
+}
+
+.event-buttons {
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+
+    justify-content: space-between;
+    gap: 0.5em;
+}
+
+
+@media (max-width: 1000px){
+
+    .event {
+        flex-direction: column;
+
+    }
+
+    .event-img {
+        width: 100%;
+        display: block;
+    }
+}
+
+@media (max-width: 600px) {
+    
+    .event-info {
+        font-size: small;
+    }
+}

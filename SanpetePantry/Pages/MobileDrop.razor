@@ -1,0 +1,141 @@
+@page "/mobiledrop"
+@rendermode InteractiveServer
+@inject IJSRuntime JsRuntime;
+
+
+<div>
+    <div class="main-title">Mobile Drop</div>
+    <img class="main-img" src="/img/MobileMainPic.jpg" alt="Food Drop Picture" />
+</div>
+
+<div class="container">
+    <div class="section">
+        <img src="/img/Mobile1.jpg" alt="Mobile Food Drop 1">
+        <p>We perform Mobile Food drops all over Sanpete County. Follow us on Facebook to get news on when and where our
+            next Mobile Food drop will happen.</p>
+    </div>
+    <div class="section">
+        <img src="/img/Mobile2.jpg" alt="Mobile Food Drop 2">
+        <p>In Ephraim, you can find us at the Teachers Parking Lot at Snow College. This convenient location serves
+            college students, faculty, and the local community, ensuring easy access to fresh food.</p>
+    </div>
+    <div class="section">
+        <img src="/img/Mobile3.jpg" alt="Mobile Food Drop 3">
+        <p>In Gunnison, our Mobile Food drop is at the Old Fire Station. This central and familiar site makes it easy
+            for residents to receive the assistance they need.</p>
+    </div>
+    <div class="section">
+        <img src="/img/Mobile4.JPG" alt="Mobile Food Drop 4">
+        <p>In Fountain Green, we operate at the Fire Station. This central location helps us reach many individuals and
+            families, providing essential food supplies to those in need.</p>
+    </div>
+</div>
+
+<div class="btn-ctn">
+    <button id="schedule-btn">View Schedule</button>
+</div>
+
+<div id="schedule-ctn" style="display: none;">
+    <img src="/img/MobileDropSchedule.png" style="max-width: 100%;">
+</div>
+
+<style>
+    .main-title {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1;
+
+        font-size: 5em;
+        color: white;
+        font-weight: 200;
+    }
+
+    .main-img {
+        width: 100%;
+        clip-path: polygon(0 0, 100% 0, 100% 70%, 0 100%);
+        z-index: -1;
+
+        filter: brightness(50%);
+
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .section {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 80%;
+    }
+
+    .section img {
+        width: 30%;
+        height: auto;
+        margin-right: 20px;
+        border-radius: 8px;
+    }
+
+    .section p {
+        margin: 0;
+        flex: 1;
+        font-size: 1.5em;
+    }
+
+    .btn-ctn {
+        display: flex;
+        justify-content: center;
+    }
+
+    #schedule-btn {
+        background-color: green;
+        border-radius: 2em 0 2em 0;
+        color: white;
+        padding: 1em;
+        font-size: x-large;
+    }
+
+    #schedule-btn:hover{
+
+        background-color: darkgreen;
+
+    }
+</style>
+
+<script>
+    document.getElementById("schedule-btn").addEventListener("click", function () {
+        var div = document.getElementById("schedule-ctn");
+
+        if (div.style.display === "none" || div.style.display === "") {
+            div.style.display = "block";
+        } else {
+            div.style.display = "none";
+        }
+    });
+
+        function scrollToTop() {
+        window.scrollTo(0, 0);
+    }
+</script>
+
+@code {
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JsRuntime.InvokeVoidAsync("scrollToTop");
+        }
+    }
+
+}

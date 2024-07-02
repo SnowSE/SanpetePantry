@@ -1,0 +1,63 @@
+@page "/events"
+@rendermode InteractiveServer
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<h1>Events</h1>
+
+<div class="events-container">
+    <div class="event evening-of-giving">
+        <img class="event-img" src="/img/EofG.png" alt="evening of giving event">
+        <div class="event-info">
+            <h2>Evening of Giving</h2>
+            <div>
+                <i class="fa-regular fa-calendar-days"></i>
+                <p>September 28, 5:30 pm</p>
+            </div>
+            <div>
+                <i class="fa-solid fa-music"></i>
+                <p>Live Music by Fat in the Fire</p>
+            </div>
+            <div>
+                <i class="fas fa-map-marker-alt"></i>
+                <p>Petersen Dance Hall, 65 South State Street, Fairview, UT</p>
+            </div>
+            <div>
+                <i class="fa-solid fa-gavel"></i>
+                <p>Live and Silent Auctions</p>
+            </div>
+            <div class="event-buttons">
+                <a href="https://sanpetepantry.app.neoncrm.com/nx/portal/neonevents/events#/events/2808">
+                    <button class="gala-btn">Attend & Support</button>
+                </a>
+                <a>
+                    <button class="auction-btn">Auction</button>
+                </a>
+                <a>
+                    <button id="sponsor-btn">Learn More</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="sponsor-info">
+    <img src="/img/Sponsor-info.png">
+    <a href="https://sanpetepantry.app.neoncrm.com/nx/portal/neonevents/events#/events/2808">
+        <button class="become-btn">Become a Sponsor</button>
+    </a>
+</div>
+
+<script>
+    document.getElementById("sponsor-btn").addEventListener("click", function() {
+        var div = document.getElementById("sponsor-info");
+        console.log("button has been clicked");
+        if (div.style.display === "none" || div.style.display === "") {
+            div.style.display = "block";
+        } else {
+            div.style.display = "none";
+        }
+    });
+</script>

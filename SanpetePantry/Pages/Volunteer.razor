@@ -12,16 +12,29 @@
 <div class="container col col-xl-6">
     <div class="row">
         <div class="col">
-            <img class="img-fluid" src="/img/Volunteers.png" alt="Volunteers" />
+            <img class="img-fluid" src="/img/VolunteerSolePicture.jpg" alt="Volunteers" />
         </div>
-        <div class="col">
-            <img class="img-fluid" src="/img/TeamAndVolunteers.png" alt="Team and Volunteers" />
-        </div>
-    </div>            
+    </div>
     <div class="fs-5 pt-5">
-        Our volunteers are the life blood of our efforts. Without their hard work and dedication we could never be able to serve all of 
-        the people that we serve. We are always looking for more talented and enthusiastic people who believe in our cause of <span class="fst-italic">"Ending Hunger in Sanpete
+        Our volunteers are the life blood of our efforts. Without their hard work and dedication we could never be able to serve all of
+        the people that we serve. We are always looking for more talented and enthusiastic people who believe in our cause of 
+        <span class="fst-italic">"Ending Hunger in Sanpete
         County!"</span>
+    </div>
+</div>
+
+<h2 class="test-title">Hear Testimonies from our volunteers and employees!</h2>
+
+<div class="vid-test">
+    <div>
+        <iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FSanpetePantry%2Fvideos%2F481669031215770%2F&show_text=false&width=560&t=0"  allow="autoplay"></iframe>
+        <span class="name">Sister Weight</span>
+        <p>"I love to serve people and help in any way that I can!"</p>
+    </div>
+    <div>
+        <iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FSanpetePantry%2Fvideos%2F851794416984741%2F&show_text=false&width=560&t=0" allow="autoplay"></iframe>
+        <span class="name">David</span>
+        <p>"My co-workers are very good people, everybody is always trying to help!"</p>
     </div>
 </div>
 
@@ -31,7 +44,7 @@
 
 <div class="row">
     <div class="container col col-md-6" style="margin: auto;">
-        <EditForm Model=@contactModel OnValidSubmit=@HandleValidSubmit>
+        <EditForm method="post" Enhance Model=@contactModel OnValidSubmit=@HandleValidSubmit FormName="volunteerForm">
 
             <label style="font-family: 'Franklin Gothic Medium';" class="form-label">Name:</label>
             <InputText @bind-Value=contactModel.Name class="form-control mb-3" />
@@ -57,8 +70,55 @@
     </div>
 </div>
 
+<style>
+    .vid-test {
+    display: flex;
+    flex-direction: row;
+
+    justify-content: center;
+}
+
+.vid-test div{
+    flex: 0.4;
+
+    display: flex;
+    flex-direction: column;
+
+    margin: 1em;
+
+    align-items: center;
+}
+
+.vid-test div *{
+    margin: 0.5em;
+}
+
+.name {
+    font-size: 2em;
+    font-weight: 600;
+
+}
+
+div p {
+    font-size: 1.5em;
+    font-weight: 300;
+}
+
+iframe {
+
+    height: 20em;
+    width: 100%;
+
+}
+
+.test-title {
+    margin: 2em;
+}
+</style>
+
 @code {
-    ExampleModel contactModel = new();
+    [SupplyParameterFromForm]
+    ExampleModel contactModel{ get; set; } = new();
 
     public class ExampleModel
     {

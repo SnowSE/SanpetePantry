@@ -1,0 +1,218 @@
+@page "/testimonies"
+@rendermode InteractiveServer
+
+<h1>Community Testimonies</h1>
+
+<div id="intro-p">
+    At the Sanpete Pantry, we are committed to providing vital support to those in need. The stories shared here reflect
+    the positive impact our services have on the community. Each testimonial highlights the difference that access to
+    nutritious food can make. Thank you for your support in helping us fight hunger and build a stronger community.
+</div>
+
+<div class="vid-test">
+    <div>
+        <iframe
+            src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FSanpetePantry%2Fvideos%2F2162051310860757%2F&show_text=false&width=560&t=0"
+            allow="autoplay"></iframe>
+        <span class="title">Helping Families</span>
+        <p>"We're really grateful we have a pantry here"</p>
+    </div>
+    <div>
+        <iframe
+            src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FSanpetePantry%2Fvideos%2F462577876712773%2F&show_text=false&width=560&t=0"
+            allow="autoplay"></iframe>
+        <span class="title">Helping our community</span>
+        <p>"We're thankful this place is here"</p>
+    </div>
+    <div>
+        <iframe
+            src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FSanpetePantry%2Fvideos%2F1016214606693654%2F&show_text=false&width=560&t=0"
+            allow="autoplay"></iframe>
+        <span class="title">Making a difference</span>
+        <p>"The food bank is a good help but they need more donations"</p>
+    </div>
+</div>
+
+<div id="testimonies-ctn">
+
+</div>
+
+<script>
+
+    async function loadTestimonies() {
+        const testimoniesContainer = document.querySelector('#testimonies-ctn');
+
+        try {
+            const testimonies = await fetch('/testimonies.json')
+                .then((response) => response.json());
+
+            testimonies.forEach((testimony) => {
+                const testimonyDiv = document.createElement('div');
+                testimonyDiv.className = 'testimony-ctn';
+
+                const nameDiv = document.createElement('div');
+                nameDiv.className = 'testimony-name';
+                nameDiv.innerText = `~ ${testimony.name}`;
+
+                const storyDiv = document.createElement('div');
+                storyDiv.className = 'testimony-story';
+                storyDiv.innerText = `" ${testimony.story} "`;
+
+                const imgElement = document.createElement('img');
+                imgElement.className = 'testimony-img';
+
+                if (testimony.female == "true") {
+
+                    imgElement.src = "/img/an-female.png";
+
+                } else {
+
+                    imgElement.src = "/img/an-male.png";
+                }
+
+
+                testimonyDiv.appendChild(imgElement);
+                testimonyDiv.appendChild(nameDiv);
+                testimonyDiv.appendChild(storyDiv);
+
+                testimoniesContainer.appendChild(testimonyDiv);
+            });
+        } catch (error) {
+            console.error('Error fetching testimonies:', error);
+        }
+    }
+
+    loadTestimonies();
+
+</script>
+
+<style>
+    #testimonies-ctn {
+        display: flex;
+        flex-wrap: wrap;
+
+        justify-content: center;
+    }
+
+    .testimony-ctn {
+        border: 2px solid black;
+
+        background-color: #BEA6A1;
+
+        margin: 0.5em;
+        padding: 2em;
+
+        flex-basis: 40%;
+
+        max-width: 100%;
+        box-sizing: border-box;
+
+        align-items: center;
+        justify-items: center;
+        justify-content: center;
+
+        display: grid;
+        grid-template-areas:
+            'image'
+            'story'
+            'name'
+        ;
+
+        transition: 0.3s;
+    }
+
+    .testimony-ctn:hover {
+        flex-basis: 45%;
+        font-size: large;
+    }
+
+    .testimony-name {
+        grid-area: name;
+
+        font-size: x-large;
+
+        align-self: center;
+        padding: 1em;
+
+        font-weight: 200;
+    }
+
+    .testimony-story {
+        grid-area: story;
+
+        font-size: 1.3em;
+        max-width: 100%;
+        text-align: justify;
+        font-weight: 400;
+
+
+        align-self: center;
+        padding: 1em;
+
+        transition: 0.3s;
+    }
+
+    .testimony-img {
+        grid-area: image;
+
+        width: 60%;
+
+        border-radius: 50%;
+
+        align-self: center;
+
+        border-radius: 50% 50% 50% 50%;
+
+        background-color: #89726E;
+    }
+
+    #intro-p {
+        align-self: center;
+
+        font-size: 1.5em;
+        text-align: justify;
+
+        padding: 1em;
+    }
+
+    h1 {
+        padding: 1em;
+    }
+
+    .vid-test {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .vid-test div {
+        flex: 0 1 45%;
+        margin: 1em;
+        align-items: center;
+        box-sizing: border-box;
+    }
+
+
+    .vid-test div * {
+        margin: 0.5em;
+    }
+
+    .title {
+        font-size: 2em;
+        font-weight: 600;
+
+    }
+
+    div p {
+        font-size: 1.5em;
+        font-weight: 300;
+    }
+
+    iframe {
+
+        height: 24em;
+        width: 100%;
+
+    }
+</style>

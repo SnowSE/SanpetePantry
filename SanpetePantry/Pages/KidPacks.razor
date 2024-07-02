@@ -1,0 +1,159 @@
+@page "/kidspacks"
+@rendermode InteractiveServer
+@using Microsoft.JSInterop;
+@using System.Threading.Tasks;
+@inject IJSRuntime JsRuntime;
+
+
+<h1>Kids Packs</h1>
+
+<h3>
+    Students who need weekend assistance are sent home with backpacks containing
+    two breakfasts and two lunches to compensate for not eating at school.
+</h3>
+
+<div class="img-ctn">
+    <img class="kids-img" src="/img/HappyKids.jpg">
+    <div style="transform: rotate(7deg);">
+        We are averaging 350 Kid-Packs per week. The cost per Kid Pack is $10. The weekly cost is $3500
+    </div>
+</div>
+
+<div class="img-ctn fade-in">
+    <div style="transform: rotate(5deg);">
+        1,120 children don't know where their next meal is coming from
+    </div>
+    <img class="kids-img" src="/img/ChlidrenPlaying.jpg">
+</div>
+
+<div class="img-ctn fade-in">
+    <img class="kids-img" src="/img/HappyGirl.jpg">
+    <div style="transform: rotate(-5deg);">
+        <div>
+            A monthly donation of $10 will provide a student with a kid-pack for a weekend
+        </div>
+        <br>
+        <div>
+            A monthly donation of $20 will feed a family of four 10 times!
+        </div>
+    </div>
+</div>
+
+
+<div class="help-ctn">
+    <a href="donate">
+        <button class="help-btn">Help now</button>
+    </a>
+</div>
+
+<style>
+    .kids-img {
+        width: 60%;
+        border-radius: 25% 75% / 50%;
+
+        border: 0.2em solid black;
+    }
+
+    .img-ctn {
+        justify-content: center;
+        align-items: center;
+        display: flex;
+
+        font-size: 1.5em;
+
+        margin-top: 3em;
+        text-align: justify;
+    }
+
+    .img-ctn div {
+        border-radius: 4em 0em 4em 0em;
+        background-color: darkgreen;
+        color: white;
+
+        padding: 1em;
+
+    }
+
+    .help-btn {
+        @* width: 60%; *@
+        background-color: green;
+        font-size: 2em;
+
+        padding: 0.7em;
+
+        margin-top: 1em;
+
+        text-decoration: none;
+        color: white;
+
+        border-radius: 2em 0 2em 0;
+    }
+
+    .help-btn:hover {
+        background-color: darkgreen;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    .help-ctn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+</style>
+
+<script>
+    @* function isElementInViewport(el) {
+
+        if (typeof jQuery === "function" && el instanceof jQuery) {
+        el = el[0];
+        }
+
+        var rect = el.getBoundingClientRect();
+
+        return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+        );
+        }
+
+        function checkElementsInViewport() {
+        var elements = document.querySelectorAll('.fade-in');
+        elements.forEach(function(element) {
+        if (isElementInViewport(element)) {
+        element.classList.add('in-view');
+        }
+        });
+        }
+
+        function everythingElse() {
+        window.addEventListener('scroll', checkElementsInViewport);
+        window.addEventListener('resize', checkElementsInViewport);
+        window.addEventListener('DOMContentLoaded', checkElementsInViewport);
+        } *@
+
+
+        function scrollToTop() {
+            window.scrollTo(0, 0);
+        }
+
+
+
+</script>
+
+
+@code {
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JsRuntime.InvokeVoidAsync("scrollToTop");
+        }
+    }
+
+}

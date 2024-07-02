@@ -1,7 +1,10 @@
 ﻿@page "/our-services"
+@rendermode InteractiveServer
+
 <h1 style="font-family: 'Franklin Gothic Medium';" class="text-center fw-bold">Our Services</h1>
 
-<h2 class="text-center pt-5" style="font-family: Gabriola;">We Provide a Number of Services to the Communities We Serve</h2>
+<h2 class="text-center pt-5" style="font-family: Gabriola;">We Provide a Number of Services to the Communities We Serve
+</h2>
 
 <div class="container">
     <div class="py-5">
@@ -56,12 +59,12 @@
         <div class="col"></div>
         <div class="col-lg-6">
             <div class="py-4">
-                <img class="img-fluid" src="/img/ComeToUs.png" alt="Come To Us"/>
+                <img class="img-fluid" src="https://umwa.org/wp-content/uploads/2021/01/Untitled-design.jpg.webp"
+                    alt="Services Picture" />
             </div>
         </div>
     </div>
 </div>
-
 
 <div class="container">
     <div class="py-5">
@@ -69,20 +72,30 @@
     </div>
     <div class="row">
         <div class="col-lg-5">
-            <img class="img-fluid" src="/img/WeComeToYou.png" alt="We Come To You" />
+            <img class="img-fluid" src="/img/FoodDrop.jpg" alt="Food Drop Picture" />
         </div>
         <div class="col-lg">
             <div class="row">
                 <div class="fs-5">
                     <div class="p-2">
-                        We perform Mobile Food drops all over Sanpete County. Follow us on <a target="_blank" href="https://www.facebook.com/SanpetePantry/">Facebook</a> to get news on when and where our
+                        We perform Mobile Food drops all over Sanpete County. Follow us on <a target="_blank"
+                            href="https://www.facebook.com/SanpetePantry/">Facebook</a> to get news on when and where
+                        our
                         next Mobile Food drop will happen.
                     </div>
                     <div class="p-2">
-                        Ephraim - Snow College "Buster's Pantry" provides a local service for Snow College Students
+                        Ephraim - Teachers Parking Lot at Snow College
                     </div>
                     <div class="p-2">
-                        Gunnison - Third-Tuesday of each month. 80 W Center Street, Church Parking Lot
+                        Gunnison - At the Old Fire Station
+                    </div>
+                    <div class="p-2">
+                        Fountain Green - At the Fire Station
+                    </div>
+                    <div>
+                        <a href="mobiledrop">
+                            <button class="schedule-btn"> Learn More </button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -98,38 +111,46 @@
     <div class="row">
         <div class="col-xl-4">
             <div class="fs-5">
-                <div class="fst-italic">"We don't want anyone in Sanpete County or anywhere in the state of Utah, especially our children, to go hungry. That is why we do this." </div>
+                <div class="fst-italic">"We don't want anyone in Sanpete County or anywhere in the state of Utah,
+                    especially our children, to go hungry. That is why we do this." </div>
                 <br />
-                Our Kid Pack program has the goal to make sure that every child gets enough food to last the weekend when they can't rely on school lunches.
+                Our Kid Pack program has the goal to make sure that every child gets enough food to last the weekend
+                when they can't rely on school lunches.
 
+                <div>
+                    <a href="kidspacks">
+                        <button class="schedule-btn"> Learn More </button>
+                    </a>
+                </div>
             </div>
         </div>
         <div class="col-xl">
             <div class="d-flex justify-content-center">
-                <iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FSanpetePantry%2Fvideos%2F1423700497962197%2F&show_text=false&width=500&t=0"
-                    width="500" height="300" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" 
+                <iframe
+                    src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FSanpetePantry%2Fvideos%2F1423700497962197%2F&show_text=false&width=500&t=0"
+                    width="600" height="400" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
+                    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
                     allowFullScreen="true"></iframe>
             </div>
-            
+
         </div>
     </div>
 </div>
 
+<style>
+    .schedule-btn {
+        width: 100%;
+        margin-top: 2em;
+        background-color: green;
+        color: white;
+        padding: 0.5em;
 
-<div class="container">
-    <div class="py-5">
-        <h3 style="font-family: 'Franklin Gothic Medium';" class="fw-bold">Education</h3>
-    </div>
-    <div class="row">
-        <div class="fs-5">
-            We partner with the Snow College Home and Family Studies department to provide free community courses on topics 
-            related to family finances, resume writing, networking, interviewing, gardening, marriage, etc. Please see the 
-            Snow College Community Education website for more information: <a href="https://www.snow.edu/community/communityed/">https://www.snow.edu/community/communityed/</a>
-        </div>
-    </div>
-</div>
+        border-radius: 4em 0 4em 0;
 
 
-@code {
+    }
 
-}
+    .schedule-btn:hover {
+        background-color: darkgreen;
+    }
+</style>
