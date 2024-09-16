@@ -20,7 +20,7 @@ services:
      - VALIDATION=http
      #- STAGING=true
     volumes:
-     - ./default.conf:/config/nginx/site-confs/default:ro
+     - ./default.conf:/config/nginx/site-confs/default.conf:ro
      - cachedcerts:/config
     ports:
      - 443:443
